@@ -39,20 +39,29 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-server-netty:1.6.3")
-                implementation("io.ktor:ktor-html-builder:1.6.3")
-                implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
+                with(BackendDeps) {
+                    implementation(ktorNetty)
+
+                    implementation(logbackClassic)
+
+                    implementation(ktorHtmlBuilder)
+                    implementation(kotlinHtmlJvm)
+                }
             }
         }
         val jvmTest by getting
         val jsMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react:17.0.2-pre.240-kotlin-1.5.30")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:17.0.2-pre.240-kotlin-1.5.30")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-styled:5.3.1-pre.240-kotlin-1.5.30")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:5.2.0-pre.240-kotlin-1.5.30")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.0-pre.240-kotlin-1.5.30")
-                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.4-pre.240-kotlin-1.5.30")
+                with(WebFrontendDeps) {
+                    implementation(reactCore)
+                    implementation(reactDom)
+                    implementation(reactRouter)
+                    implementation(reactRedux)
+
+                    implementation(redux)
+
+                    implementation(styled)
+                }
             }
         }
         val jsTest by getting
