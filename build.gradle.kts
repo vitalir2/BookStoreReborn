@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.6.10"
+    kotlin(SharedDeps.kotlinMultiplatform) version SharedVersions.kotlin
     application
 }
 
@@ -7,7 +7,6 @@ group = "me.vitalir"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    jcenter()
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
 }
@@ -34,7 +33,7 @@ kotlin {
         val commonMain by getting
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test"))
+                implementation(kotlin(SharedDeps.kotlinTest))
             }
         }
         val jvmMain by getting {
