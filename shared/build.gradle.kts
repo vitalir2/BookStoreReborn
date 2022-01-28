@@ -1,6 +1,5 @@
 plugins {
     kotlin(SharedDeps.kotlinMultiplatform) version SharedVersions.kotlin
-    application
 }
 
 repositories {
@@ -33,18 +32,7 @@ kotlin {
                 implementation(kotlin(SharedDeps.kotlinTest))
             }
         }
-        val jvmMain by getting {
-            dependencies {
-                with(BackendDeps) {
-                    implementation(ktorNetty)
-
-                    implementation(logbackClassic)
-
-                    implementation(ktorHtmlBuilder)
-                    implementation(kotlinHtmlJvm)
-                }
-            }
-        }
+        val jvmMain by getting
         val jvmTest by getting
         val jsMain by getting {
             dependencies {
@@ -64,16 +52,7 @@ kotlin {
     }
 }
 
-application {
-    mainClass.set("me.vitalir.application.ServerKt")
-}
-
 tasks.named<Copy>("jvmProcessResources") {
     val jsBrowserDistribution = tasks.named("jsBrowserDistribution")
     from(jsBrowserDistribution)
-}
-
-tasks.named<JavaExec>("run") {
-    dependsOn(tasks.named<Jar>("jvmJar"))
-    classpath(tasks.named<Jar>("jvmJar"))
 }
