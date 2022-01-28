@@ -1,4 +1,4 @@
-package me.vitalir.application
+package jvmMain.kotlin.me.vitalir.application
 
 import io.ktor.application.*
 import io.ktor.html.*
