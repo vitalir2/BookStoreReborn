@@ -5,6 +5,7 @@ object WebFrontendDeps {
     const val redux = "org.jetbrains.kotlin-wrappers:kotlin-redux:${WebFrontedVersions.redux}"
     const val reactRedux = "org.jetbrains.kotlin-wrappers:kotlin-react-redux:${WebFrontedVersions.reactRedux}"
     const val styled = "org.jetbrains.kotlin-wrappers:kotlin-styled:${WebFrontedVersions.kotlinStyled}"
+    const val kotlinJs = "stdlib-js"
 }
 
 object WebFrontedVersions {

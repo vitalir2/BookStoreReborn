@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.js") version "1.6.10"
+    id("org.jetbrains.kotlin.js")
 }
 
 repositories {
@@ -7,7 +7,18 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-js"))
+    with(WebFrontendDeps) {
+        implementation(kotlin(kotlinJs))
+
+        implementation(reactCore)
+        implementation(reactDom)
+        implementation(reactRouter)
+        implementation(reactRedux)
+
+        implementation(redux)
+
+        implementation(styled)
+    }
 }
 
 kotlin {

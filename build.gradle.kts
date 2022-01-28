@@ -3,6 +3,9 @@ buildscript {
         gradlePluginPortal()
         google()
     }
+    dependencies {
+        classpath(Plugins.kotlinPlugin)
+    }
 }
 
 allprojects {

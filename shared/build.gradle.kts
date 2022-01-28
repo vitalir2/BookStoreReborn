@@ -1,5 +1,5 @@
 plugins {
-    kotlin(SharedDeps.kotlinMultiplatform) version SharedVersions.kotlin
+    kotlin(SharedDeps.kotlinMultiplatform)
 }
 
 repositories {
