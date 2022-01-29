@@ -12,12 +12,18 @@ dependencies {
 
         implementation(reactCore)
         implementation(reactDom)
+        implementation(reactCss)
         implementation(reactRouter)
         implementation(reactRedux)
 
         implementation(redux)
 
         implementation(styled)
+        implementation(kotlinMui)
+        implementation(kotlinMuiIcons)
+
+        implementation(npm("@emotion/react", "11.7.1"))
+        implementation(npm("@emotion/styled", "11.6.0"))
     }
 }
 
