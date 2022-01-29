@@ -1,11 +1,12 @@
 package components
 
+import csstype.Color
 import csstype.ColorProperty
+import csstype.px
 import kotlinext.js.jso
 import mui.icons.material.LocalLibrary
 import mui.material.Stack
 import mui.material.StackDirection
-import mui.material.SvgIconColor
 import mui.material.Typography
 import mui.system.ResponsiveStyleValue
 import react.FC
@@ -28,7 +29,10 @@ val BookStoreLogo = FC<Props> {
             +"BookStore"
         }
         LocalLibrary {
-            color = SvgIconColor.primary
+            sx = jso {
+                fontSize = 48.px
+                color = Color("#ffffff")
+            }
         }
     }
 }
