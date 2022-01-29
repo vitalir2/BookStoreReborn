@@ -4,9 +4,8 @@ import react.dom.render
 
 fun main() {
     window.onload = {
-        render(
-            element = BookStoreApp,
-            container = document.getElementById("root")
-        )
+        render(document.getElementById("root")!!) {
+            child(BookStoreApp)
+        }
     }
 }
