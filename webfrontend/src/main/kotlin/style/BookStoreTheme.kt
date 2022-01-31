@@ -1,19 +1,18 @@
 package style
 
-import kotlinext.js.Record
 import kotlinext.js.jso
 import mui.material.styles.PaletteColor
-import mui.material.styles.createPalette
-import mui.system.createTheme
+import mui.material.styles.PaletteOptions
+import mui.material.styles.createTheme
 
 val BookStoreTheme = createTheme(
     options = jso {
-        palette = lightPalette.unsafeCast<Record<String, Any>>()
+        palette = lightPalette
         typography = js("({ h4: { fontFamily: 'sans-serif', fontWeight: 400, fontSize: '48px' } })")
     }
 )
 
-val lightPalette = createPalette(
+val lightPalette: PaletteOptions =
     jso {
         mode = "light"
         primary = jso<PaletteColor> {
@@ -32,4 +31,3 @@ val lightPalette = createPalette(
             main = Colors.orange600
         }
     }
-)
