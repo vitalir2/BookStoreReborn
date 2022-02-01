@@ -1,10 +1,6 @@
-import components.BookStoreLogo
-import components.SearchBar
+import components.Header
 import kotlinx.browser.document
-import mui.material.Stack
-import mui.material.StackDirection
 import mui.material.styles.ThemeProvider
-import mui.system.ResponsiveStyleValue
 import react.FC
 import react.Props
 import react.create
@@ -22,11 +18,15 @@ private val BookStoreApp = FC<Props> {
     ThemeProvider {
         theme = BookStoreTheme
 
+        /*
         Stack {
             direction = ResponsiveStyleValue(StackDirection.row)
 
             BookStoreLogo()
             SearchBar()
         }
+
+         */
+        Header()
     }
 }

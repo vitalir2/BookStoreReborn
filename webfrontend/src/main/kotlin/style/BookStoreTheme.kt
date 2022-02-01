@@ -8,7 +8,7 @@ import mui.material.styles.createTheme
 val BookStoreTheme = createTheme(
     options = jso {
         palette = lightPalette
-        typography = js("({ h4: { fontFamily: 'sans-serif', fontWeight: 400, fontSize: '48px' } })")
+        typography = js("({ h4: { fontFamily: 'sans-serif', fontWeight: 400, fontSize: '1.5rem' } })")
     }
 )
 

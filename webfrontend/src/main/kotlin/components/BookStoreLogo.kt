@@ -1,7 +1,7 @@
 package components
 
 import csstype.Color
-import csstype.px
+import csstype.rem
 import kotlinext.js.jso
 import mui.icons.material.LocalLibrary
 import mui.material.Stack
@@ -30,7 +30,7 @@ val BookStoreLogo = FC<Props> {
         }
         LocalLibrary {
             sx = jso {
-                fontSize = 48.px
+                fontSize = 1.5.rem
                 color = Color(lightPalette.primary.contrastText)
             }
         }

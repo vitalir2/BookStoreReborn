@@ -2,6 +2,7 @@ package components
 
 import csstype.Color
 import csstype.em
+import csstype.rem
 import kotlinext.js.jso
 import mui.icons.material.SearchOutlined
 import mui.material.*
@@ -14,18 +15,17 @@ val SearchBar = FC<Props> {
     FormControl {
         sx = jso {
             width = 20.em
+            height = 2.rem
+            margin = 0.5.rem
+
             backgroundColor = Color(Colors.white)
         }
         variant = FormControlVariant.outlined
 
         OutlinedInput {
             sx = jso {
+                height = 2.rem
                 paddingLeft = 0.5.em
-                paddingTop = 0.1.em
-                paddingBottom = 0.1.em
-
-                fontSize = 1.2.em
-
             }
             id = "searchbar-input"
             type = "text"
