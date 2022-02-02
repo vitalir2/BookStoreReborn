@@ -18,15 +18,6 @@ private val BookStoreApp = FC<Props> {
     ThemeProvider {
         theme = BookStoreTheme
 
-        /*
-        Stack {
-            direction = ResponsiveStyleValue(StackDirection.row)
-
-            BookStoreLogo()
-            SearchBar()
-        }
-
-         */
         Header()
     }
 }
