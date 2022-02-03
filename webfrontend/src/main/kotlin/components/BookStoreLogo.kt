@@ -1,24 +1,27 @@
 package components
 
+import csstype.AlignItems
 import csstype.Color
-import csstype.rem
+import csstype.Display
+import csstype.px
 import kotlinext.js.jso
 import mui.icons.material.LocalLibrary
-import mui.material.Stack
-import mui.material.StackDirection
+import mui.material.Box
+import mui.material.SvgIconSize
 import mui.material.Typography
-import mui.system.ResponsiveStyleValue
 import react.FC
 import react.Props
 import style.lightPalette
 
 val BookStoreLogo = FC<Props> {
-    Stack {
+    Box {
         sx = jso {
+            display = Display.flex
+            alignItems = AlignItems.center
+            gap = 8.px
+
             backgroundColor = Color(lightPalette.primary.main)
         }
-        direction = ResponsiveStyleValue(StackDirection.row)
-        spacing = ResponsiveStyleValue(2)
 
         Typography {
             sx = jso {
@@ -30,9 +33,9 @@ val BookStoreLogo = FC<Props> {
         }
         LocalLibrary {
             sx = jso {
-                fontSize = 1.5.rem
                 color = Color(lightPalette.primary.contrastText)
             }
+            fontSize = SvgIconSize.large
         }
     }
 }

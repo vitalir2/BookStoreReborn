@@ -4,10 +4,7 @@ import csstype.*
 import kotlinext.js.jso
 import mui.icons.material.AccountCircle
 import mui.icons.material.ShoppingCart
-import mui.material.AppBar
-import mui.material.Link
-import mui.material.LinkUnderline
-import mui.material.Typography
+import mui.material.*
 import react.FC
 import react.Props
 import react.css.css
@@ -24,7 +21,6 @@ val Header = FC<Props> {
             alignItems = AlignItems.center
             justifyContent = JustifyContent.spaceAround
 
-            fontSize = 1.2.rem
             backgroundColor = Color(Colors.red900)
         }
 
@@ -35,8 +31,8 @@ val Header = FC<Props> {
             ShoppingCart {
                 sx = jso {
                     color = Color(Colors.white)
-                    fontSize = 1.5.rem
                 }
+                fontSize = SvgIconSize.large
             }
         }
         Typography {
@@ -65,8 +61,8 @@ val Header = FC<Props> {
             AccountCircle {
                 sx = jso {
                     color = Color(Colors.white)
-                    fontSize = 1.5.rem
                 }
+                fontSize = SvgIconSize.large
             }
         }
     }
