@@ -11,6 +11,7 @@ import mui.material.SvgIconSize
 import mui.material.Typography
 import react.FC
 import react.Props
+import react.router.dom.Link
 import style.lightPalette
 
 val BookStoreLogo = FC<Props> {
@@ -23,19 +24,27 @@ val BookStoreLogo = FC<Props> {
             backgroundColor = Color(lightPalette.primary.main)
         }
 
-        Typography {
-            sx = jso {
-                color = Color(lightPalette.primary.contrastText)
-            }
-            variant = "h4"
+        Link {
+            to = "/"
 
-            +"BookStore"
-        }
-        LocalLibrary {
-            sx = jso {
-                color = Color(lightPalette.primary.contrastText)
+            Typography {
+                sx = jso {
+                    color = Color(lightPalette.primary.contrastText)
+                }
+                variant = "h4"
+
+                +"BookStore"
             }
-            fontSize = SvgIconSize.large
+        }
+        Link {
+            to = "/"
+
+            LocalLibrary {
+                sx = jso {
+                    color = Color(lightPalette.primary.contrastText)
+                }
+                fontSize = SvgIconSize.large
+            }
         }
     }
 }

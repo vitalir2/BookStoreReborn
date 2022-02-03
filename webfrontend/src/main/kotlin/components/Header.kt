@@ -27,12 +27,15 @@ val Header = FC<Props> {
         BookStoreLogo()
         SearchBar()
         Link {
-            href = "#" // TODO: add href to cart page
-            ShoppingCart {
-                sx = jso {
-                    color = Color(Colors.white)
+            react.router.dom.Link {
+                to = "/cart"
+
+                ShoppingCart {
+                    sx = jso {
+                        color = Color(Colors.white)
+                    }
+                    fontSize = SvgIconSize.large
                 }
-                fontSize = SvgIconSize.large
             }
         }
         Typography {
@@ -57,12 +60,15 @@ val Header = FC<Props> {
             +"Browse"
         }
         Link {
-            href = "#"
-            AccountCircle {
-                sx = jso {
-                    color = Color(Colors.white)
+            react.router.dom.Link {
+                to = "/login"
+
+                AccountCircle {
+                    sx = jso {
+                        color = Color(Colors.white)
+                    }
+                    fontSize = SvgIconSize.large
                 }
-                fontSize = SvgIconSize.large
             }
         }
     }
