@@ -2,7 +2,6 @@ package style
 
 import csstype.FontWeight
 import csstype.pct
-import csstype.rem
 import kotlinext.js.jso
 import mui.material.styles.PaletteColor
 import mui.material.styles.PaletteOptions
@@ -13,131 +12,88 @@ val BookStoreTheme = createTheme(
         palette = lightPalette
         typography = jso<TypographyOptions> {
             htmlFontSize = 16
-            fontFamily = "sans-serif"
+            fontFamily = FontFamily.LATO
             h1 = jso {
+                fontFamily = FontFamily.JOSEFIN_SANS
                 fontWeight = FontWeight.normal
-                fontSize = 7.75.rem
+                fontSize = 124.pixelsToRem()
                 letterSpacing = (-1.5).pct
             }
             h2 = jso {
+                fontFamily = FontFamily.JOSEFIN_SANS
                 fontWeight = FontWeight.normal
-                fontSize = 4.8125.rem
+                fontSize = 77.pixelsToRem()
                 letterSpacing = (-1.5).pct
             }
             h3 = jso {
+                fontFamily = FontFamily.JOSEFIN_SANS
                 fontWeight = FontWeight.bold
-                fontSize = 3.875.rem
+                fontSize = 62.pixelsToRem()
                 letterSpacing = 0
             }
             h4 = jso {
+                fontFamily = FontFamily.JOSEFIN_SANS
                 fontWeight = FontWeight.normal
-                fontSize = 2.75.rem
+                fontSize = 44.pixelsToRem()
                 letterSpacing = 0.25.pct
             }
             h5 = jso {
+                fontFamily = FontFamily.JOSEFIN_SANS
                 fontWeight = FontWeight.bold
-                fontSize = 1.9375.rem
+                fontSize = 31.pixelsToRem()
                 letterSpacing = 0
             }
             h6 = jso {
+                fontFamily = FontFamily.JOSEFIN_SANS
                 fontWeight = FontWeight.bold
-                fontSize = 1.625.rem
+                fontSize = 26.pixelsToRem()
                 letterSpacing = 0.15.pct
             }
             subtitle1 = jso {
+                fontFamily = FontFamily.JOSEFIN_SANS
                 fontWeight = FontWeight.normal
-                fontSize = 1.3125.rem
+                fontSize = 21.pixelsToRem()
                 letterSpacing = 0.15.pct
             }
             subtitle2 = jso {
+                fontFamily = FontFamily.JOSEFIN_SANS
                 fontWeight = FontWeight.bold
-                fontSize = 1.125.rem
+                fontSize = 18.pixelsToRem()
                 letterSpacing = 0.1.pct
             }
             body1 = jso {
+                fontFamily = FontFamily.LATO
                 fontWeight = FontWeight.normal
-                fontSize = 1.0625.rem
+                fontSize = 17.pixelsToRem()
                 letterSpacing = 0.5.pct
             }
             body2 = jso {
+                fontFamily = FontFamily.LATO
                 fontWeight = FontWeight.normal
-                fontSize = 0.9375.rem
+                fontSize = 15.pixelsToRem()
                 letterSpacing = 0.25.pct
             }
             button = jso {
+                fontFamily = FontFamily.LATO
                 fontWeight = FontWeight.bold
-                fontSize = 0.9375.rem
+                fontSize = 15.pixelsToRem()
                 letterSpacing = 1.25.pct
             }
             caption = jso {
+                fontFamily = FontFamily.LATO
                 fontWeight = FontWeight.normal
-                fontSize = 1.rem
+                fontSize = 16.pixelsToRem()
                 letterSpacing = 0.4.pct
             }
             overline = jso {
+                fontFamily = FontFamily.LATO
                 fontWeight = FontWeight.normal
-                fontSize = 0.625.rem
+                fontSize = 10.pixelsToRem()
                 letterSpacing = 1.5.pct
             }
         }
     }
 )
-
-interface TypographyOptions {
-    var htmlFontSize: Number
-
-    var pxToRem: dynamic
-
-    var fontFamily: dynamic
-
-    var fontSize: dynamic
-
-    var fontWeightLight: dynamic
-
-    var fontWeightRegular: dynamic
-
-    var fontWeightMedium: dynamic
-
-    var fontWeightBold: dynamic
-
-    var h1: FontOptions
-
-    var h2: FontOptions
-
-    var h3: FontOptions
-
-    var h4: FontOptions
-
-    var h5: FontOptions
-
-    var h6: FontOptions
-
-    var subtitle1: FontOptions
-
-    var subtitle2: FontOptions
-
-    var body1: FontOptions
-
-    var body2: FontOptions
-
-    var button: FontOptions
-
-    var caption: FontOptions
-
-    var overline: FontOptions
-}
-
-interface FontOptions {
-    var fontFamily: dynamic
-
-    var fontWeight: dynamic
-
-    var fontSize: dynamic
-
-    var lineHeight: dynamic
-
-    var letterSpacing: dynamic
-}
 
 val lightPalette: PaletteOptions =
     jso {
