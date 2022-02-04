@@ -1,6 +1,7 @@
 package com.bookstore
 
-import com.bookstore.plugins.configureBooksRest
+import com.bookstore.plugins.configureHttp
+import com.bookstore.plugins.configureMainRoutes
 import io.ktor.server.application.*
 
 fun main(args: Array<String>): Unit =
@@ -8,5 +9,6 @@ fun main(args: Array<String>): Unit =
 
 @Suppress("unused") // application.conf references the main function. This annotation prevents the IDE from marking it as unused.
 fun Application.module() {
-    configureBooksRest()
+    configureHttp()
+    configureMainRoutes()
 }
