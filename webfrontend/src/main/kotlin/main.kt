@@ -3,10 +3,12 @@ import kotlinx.browser.document
 import mui.material.styles.ThemeProvider
 import page.CartPage
 import page.LoginPage
+import page.MainPage
 import react.FC
 import react.Props
 import react.create
 import react.dom.render
+import react.router.Outlet
 import react.router.Route
 import react.router.Routes
 import react.router.dom.BrowserRouter
@@ -27,6 +29,11 @@ private val MainRouter = FC<Props> {
                 element = BookStoreApp.create()
 
                 Route {
+                    index = true
+                    element = MainPage.create()
+                }
+
+                Route {
                     path = "cart"
                     element = CartPage.create()
                 }
@@ -44,5 +51,6 @@ private val BookStoreApp = FC<Props> {
         theme = BookStoreTheme
 
         Header()
+        Outlet()
     }
 }
