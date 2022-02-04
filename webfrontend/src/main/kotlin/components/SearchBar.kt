@@ -9,10 +9,14 @@ import mui.material.*
 import react.FC
 import react.Props
 import react.create
+import react.dom.html.ButtonType
+import react.useState
 import style.Colors
 
 val SearchBar = FC<Props> {
     FormControl {
+        val (text, setText) = useState("")
+
         sx = jso {
             width = 20.em
             height = 2.rem
@@ -29,7 +33,10 @@ val SearchBar = FC<Props> {
             }
             id = "searchbar-input"
             type = "text"
-            value = ""
+            value = text
+            onChange = { event ->
+                setText(event.target.asDynamic().value as String)
+            }
             placeholder = "search by author"
             endAdornment = SearchInputAdornment.create()
         }
@@ -45,6 +52,11 @@ val SearchInputAdornment = FC<Props> {
         position = InputAdornmentPosition.end
 
         IconButton {
+            type = ButtonType.submit
+            onClick = {
+                // TODO: Do search
+            }
+
             SearchOutlined()
         }
     }
