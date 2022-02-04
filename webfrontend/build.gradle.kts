@@ -24,6 +24,9 @@ dependencies {
 
         implementation(npm("@emotion/react", "11.7.1"))
         implementation(npm("@emotion/styled", "11.6.0"))
+
+        implementation(npm("@mui/styles", "5.3.0"))
+        implementation(npm("react-material-ui-carousel", "3.1.1"))
     }
 }
 
