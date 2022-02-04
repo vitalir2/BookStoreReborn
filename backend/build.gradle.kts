@@ -5,7 +5,7 @@ val logback_version = "1.2.3"
 plugins {
     application
     kotlin("jvm")
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
 }
 
 repositories {
@@ -15,31 +15,34 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-core:$ktor_version")
-    implementation("io.ktor:ktor-server-auth:$ktor_version")
-    implementation("io.ktor:ktor-server-locations:$ktor_version")
-    implementation("io.ktor:ktor-client-core:$ktor_version")
-    implementation("io.ktor:ktor-client-core-jvm:$ktor_version")
-    implementation("io.ktor:ktor-client-apache:$ktor_version")
-    implementation("io.ktor:ktor-server-sessions:$ktor_version")
-    implementation("io.ktor:ktor-server-auto-head-response:$ktor_version")
-    implementation("io.ktor:ktor-server-host-common:$ktor_version")
-    implementation("io.ktor:ktor-server-status-pages:$ktor_version")
-    implementation("io.ktor:ktor-server-caching-headers:$ktor_version")
-    implementation("io.ktor:ktor-server-compression:$ktor_version")
-    implementation("io.ktor:ktor-server-conditional-headers:$ktor_version")
-    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
-    implementation("io.ktor:ktor-server-default-headers:$ktor_version")
-    implementation("io.ktor:ktor-server-call-logging:$ktor_version")
-    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.3")
-    implementation("io.ktor:ktor-server-html-builder:$ktor_version")
-    implementation("org.jetbrains:kotlin-css-jvm:1.0.0-pre.129-kotlin-1.4.20")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
-    implementation("io.ktor:ktor-server-websockets:$ktor_version")
-    implementation("io.ktor:ktor-server-netty:$ktor_version")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
-    testImplementation("io.ktor:ktor-server-tests:$ktor_version")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    with(BackendDeps) {
+        implementation(ktorServerCore)
+        implementation(ktorAuth)
+        implementation(ktorLocations)
+        implementation(ktorClientCore)
+        implementation(ktorClientJvm)
+        implementation(ktorClientApache)
+        implementation(ktorSessions)
+        implementation(ktorAutoHeadResponse)
+        implementation(ktorServerHostCommon)
+        implementation(ktorStatusPages)
+        implementation(ktorCachingHeaders)
+        implementation(ktorCompression)
+        implementation(ktorConditionalHeaders)
+        implementation(ktorContentNegotiation)
+        implementation(ktorDefaultHeaders)
+        implementation(ktorCallLogging)
+        implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.3")
+        implementation(ktorHtmlBuilder)
+        implementation("org.jetbrains:kotlin-css-jvm:1.0.0-pre.129-kotlin-1.4.20")
+        implementation(ktorSerializationJson)
+        implementation(ktorServerWebsocket)
+        implementation(ktorNetty)
+        implementation(logbackClassic)
+
+        testImplementation(ktorServerTests)
+        testImplementation(kotlinTestJunit)
+    }
 }
 
 application {
@@ -51,6 +54,3 @@ tasks.named<JavaExec>("run") {
     dependsOn(tasks.named<Jar>("jar"))
     classpath(tasks.named<Jar>("jar"))
 }
-
-tasks.register("wrapper") {}
-tasks.register("prepareKotlinBuildScriptModel") {}
