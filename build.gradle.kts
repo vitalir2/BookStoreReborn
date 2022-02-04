@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath(Plugins.kotlinPlugin)
+        classpath(Plugins.kotlinSerializationClasspath)
     }
 }
 

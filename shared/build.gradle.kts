@@ -1,5 +1,6 @@
 plugins {
     kotlin(SharedDeps.kotlinMultiplatform)
+    kotlin(Plugins.kotlinSerialization)
 }
 
 repositories {
@@ -26,7 +27,11 @@ kotlin {
         }
     }
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(SharedDeps.kotlinSerializationJson)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin(SharedDeps.kotlinTest))

@@ -5,7 +5,7 @@ val logback_version = "1.2.3"
 plugins {
     application
     kotlin("jvm")
-    kotlin("plugin.serialization") version "1.6.10"
+    kotlin("plugin.serialization")
 }
 
 repositories {
@@ -15,6 +15,7 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":shared"))
     with(BackendDeps) {
         implementation(ktorServerCore)
         implementation(ktorAuth)
