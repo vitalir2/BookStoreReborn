@@ -4,6 +4,8 @@ import Carousel
 import components.thirdparty.CarouselAnimation
 import csstype.Cursor
 import csstype.em
+import csstype.px
+import kotlinx.browser.window
 import mui.material.Stack
 import mui.material.StackDirection
 import mui.material.Typography
@@ -23,12 +25,22 @@ val MainPage = FC<Props> {
         animation = CarouselAnimation.slide
 
         repeat(2) {
-            BookSlide()
+            BookSlide {
+                bookItemWidth = when (window.innerWidth) {
+                    in 0..400 -> 100
+                    in 400..800 -> 150
+                    else -> 200
+                }
+            }
         }
     }
 }
 
-val BookSlide = FC<Props> {
+external interface BookSlideProps : Props {
+    var bookItemWidth: Int
+}
+
+val BookSlide = FC<BookSlideProps> { props ->
     Stack {
         direction = ResponsiveStyleValue(StackDirection.row)
         spacing = ResponsiveStyleValue(4)
@@ -36,12 +48,15 @@ val BookSlide = FC<Props> {
         val stubTitle = "Title of the book"
         val stubAuthors = listOf("Chen Pin", "Joe Funny")
         val stubPrice = 2.5
-        repeat(10) {
+
+        val windowWidth = window.innerWidth
+        repeat(windowWidth / props.bookItemWidth - 1) {
             BookItem {
                 title = stubTitle
                 authors = stubAuthors
                 price = stubPrice
                 imageUrl = null
+                width = props.bookItemWidth
             }
         }
     }
@@ -54,7 +69,7 @@ val BookItem = FC<BookProps> { props ->
 
         img {
             css {
-                width = 12.em
+                width = (props.width).px
                 height = 20.em
                 cursor = Cursor.pointer
             }
@@ -80,4 +95,5 @@ external interface BookProps : Props {
     var authors: List<String>
     var price: Double
     var imageUrl: String?
+    var width: Int
 }
