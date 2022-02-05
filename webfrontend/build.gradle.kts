@@ -1,5 +1,6 @@
 plugins {
     kotlin("js")
+    kotlin(Plugins.kotlinSerialization)
 }
 
 repositories {
@@ -7,6 +8,8 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":shared"))
+
     with(WebFrontendDeps) {
         implementation(kotlin(kotlinJs))
 
@@ -21,6 +24,14 @@ dependencies {
         implementation(styled)
         implementation(kotlinMui)
         implementation(kotlinMuiIcons)
+
+        implementation(SharedDeps.ktorClientCore)
+        implementation(SharedDeps.ktorClientLogging)
+        implementation(ktorClientJs)
+
+        implementation(SharedDeps.kotlinCoroutines)
+        implementation(kotlinCoroutinesJs)
+        implementation(SharedDeps.kotlinSerializationJson)
 
         implementation(npm("@emotion/react", "11.7.1"))
         implementation(npm("@emotion/styled", "11.6.0"))

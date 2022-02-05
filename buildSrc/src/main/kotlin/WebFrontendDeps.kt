@@ -12,6 +12,9 @@ object WebFrontendDeps {
     const val kotlinMui = "$kotlinWrappers:kotlin-mui:${WebFrontedVersions.mui}"
     const val kotlinMuiIcons = "$kotlinWrappers:kotlin-mui-icons:${WebFrontedVersions.mui}"
 
+    const val ktorClientJs = "io.ktor:ktor-client-js:${SharedVersions.ktor}"
+    const val kotlinCoroutinesJs = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:${SharedVersions.kotlinCoroutines}"
+
     const val kotlinJs = "stdlib-js"
 
     object Npm {

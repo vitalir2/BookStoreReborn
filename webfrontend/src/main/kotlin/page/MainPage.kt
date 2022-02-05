@@ -1,11 +1,18 @@
 package page
 
 import Carousel
+import client.HttpClient
 import components.thirdparty.CarouselAnimation
 import csstype.Cursor
 import csstype.em
 import csstype.px
+import io.ktor.client.call.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import kotlinx.browser.window
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.launch
+import model.Book
 import mui.material.Stack
 import mui.material.StackDirection
 import mui.material.Typography
@@ -14,8 +21,22 @@ import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.img
+import react.useEffect
+import react.useState
 
 val MainPage = FC<Props> {
+    val (books, setBooks) = useState(emptyList<Book>())
+    useEffect {
+        HttpClient.scope.launch(CoroutineExceptionHandler { coroutineContext, throwable ->
+            console.log("Error in coroutine: ${throwable.message}")
+        }) {
+            val booksResponse: HttpResponse = HttpClient.client.get("http://0.0.0.0:8081/book")
+            if (booksResponse.status.value !in 400..600) {
+                setBooks(booksResponse.body<List<Book>>())
+            }
+        }
+    }
+
     Carousel {
         autoPlay = false
         indicators = false
@@ -24,13 +45,24 @@ val MainPage = FC<Props> {
         cycleNavigation = false
         animation = CarouselAnimation.slide
 
-        repeat(2) {
+        if (books.isEmpty()) {
+            Typography {
+                variant = "h2"
+                +"Internal error"
+            }
+            return@Carousel
+        }
+        val itemWidth = when (window.innerWidth) {
+            in 0..400 -> 100
+            in 400..800 -> 150
+            else -> 200
+        }
+        val batchSize = window.innerWidth / itemWidth - 1
+        val repeatCount = books.size / batchSize
+        repeat(repeatCount) { index ->
             BookSlide {
-                bookItemWidth = when (window.innerWidth) {
-                    in 0..400 -> 100
-                    in 400..800 -> 150
-                    else -> 200
-                }
+                bookItemWidth = itemWidth
+                items = books.subList(fromIndex = index * batchSize, toIndex = (index + 1) * batchSize)
             }
         }
     }
@@ -38,6 +70,7 @@ val MainPage = FC<Props> {
 
 external interface BookSlideProps : Props {
     var bookItemWidth: Int
+    var items: List<Book>
 }
 
 val BookSlide = FC<BookSlideProps> { props ->
@@ -45,17 +78,13 @@ val BookSlide = FC<BookSlideProps> { props ->
         direction = ResponsiveStyleValue(StackDirection.row)
         spacing = ResponsiveStyleValue(4)
 
-        val stubTitle = "Title of the book"
-        val stubAuthors = listOf("Chen Pin", "Joe Funny")
-        val stubPrice = 2.5
-
         val windowWidth = window.innerWidth
-        repeat(windowWidth / props.bookItemWidth - 1) {
+        for (book in props.items) {
             BookItem {
-                title = stubTitle
-                authors = stubAuthors
-                price = stubPrice
-                imageUrl = null
+                title = book.title
+                authors = book.authors.map { "${it.firstName} ${it.lastName}" }
+                price = book.price
+                imageUrl = book.pictureUrl
                 width = props.bookItemWidth
             }
         }
@@ -74,9 +103,7 @@ val BookItem = FC<BookProps> { props ->
                 cursor = Cursor.pointer
             }
 
-            // TODO: Remove after client integration
-            src =
-                "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-HxVxhy2RH-0%2FVANY1W2HZRI%2FAAAAAAAAEig%2Fvi6vPNg85ns%2Fs1600%2FTheHungerGames.jpg&f=1&nofb=1"
+            src = props.imageUrl
         }
         Typography {
             +props.title
