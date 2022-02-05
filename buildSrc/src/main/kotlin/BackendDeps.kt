@@ -24,6 +24,7 @@ object BackendDeps {
     const val ktorServerWebsocket = "io.ktor:ktor-server-websockets:${SharedVersions.ktor}"
     const val ktorServerTests = "io.ktor:ktor-server-tests:${SharedVersions.ktor}"
     const val kotlinTestJunit = "org.jetbrains.kotlin:kotlin-test-junit:${SharedVersions.kotlin}"
+    const val ktorCors = "io.ktor:ktor-server-cors:${SharedVersions.ktor}"
 }
 
 object BackendVersions {

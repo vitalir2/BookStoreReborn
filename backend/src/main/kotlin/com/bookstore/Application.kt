@@ -1,5 +1,6 @@
 package com.bookstore
 
+import com.bookstore.plugins.configureCors
 import com.bookstore.plugins.configureHttp
 import com.bookstore.plugins.configureMainRoutes
 import io.ktor.server.application.*
@@ -11,4 +12,5 @@ fun main(args: Array<String>): Unit =
 fun Application.module() {
     configureHttp()
     configureMainRoutes()
+    configureCors()
 }
