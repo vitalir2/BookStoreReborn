@@ -103,8 +103,6 @@ external interface CarouselProps : PropsWithChildren {
     /** Defines the element inside the indicator `IconButton`s Refer to [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples.
      * It is advised to use Material UI Icons, but you could use any element (`<img/>`, `<div/>`, ...) you like.*/
     var IndicatorIcon: ReactNode?
-
-    var sx: mui.system.SxProps<mui.system.Theme>?
 }
 
 external interface CarouselNavProps : PropsWithClassName, PropsWithStyle, AriaAttributes
