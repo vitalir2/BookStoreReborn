@@ -18,7 +18,7 @@ import react.dom.html.ReactHTML.img
 import react.key
 
 external interface BookCarouselProps : Props {
-    var carouselBooks: List<Book>
+    var carouselBooks: Array<Book>
 }
 
 val BookCarousel = FC<BookCarouselProps> { props ->
@@ -45,11 +45,16 @@ val BookCarousel = FC<BookCarouselProps> { props ->
             else -> 200
         }
         val batchSize = window.innerWidth / itemWidth - 1
-        val repeatCount = books.size / batchSize
+        val repeatCount = books.size / batchSize + 1
         repeat(repeatCount) { index ->
+            val fromIndex = index * batchSize
+            var toIndex = (index + 1) * batchSize
+            if (toIndex >= books.size) {
+                toIndex = books.size - 1
+            }
             BookSlide {
                 bookItemWidth = itemWidth
-                items = books.subList(fromIndex = index * batchSize, toIndex = (index + 1) * batchSize)
+                items = books.sliceArray(fromIndex..toIndex)
             }
         }
     }
@@ -57,7 +62,7 @@ val BookCarousel = FC<BookCarouselProps> { props ->
 
 external interface BookSlideProps : Props {
     var bookItemWidth: Int
-    var items: List<Book>
+    var items: Array<Book>
 }
 
 val BookSlide = FC<BookSlideProps> { props ->
@@ -65,9 +70,9 @@ val BookSlide = FC<BookSlideProps> { props ->
         direction = ResponsiveStyleValue(StackDirection.row)
         spacing = ResponsiveStyleValue(4)
 
-        for (book in props.items) {
+        props.items.forEachIndexed { index, book ->
             BookItem {
-                key = book.bookId.toString()
+                key = book.bookId.toString() + index
                 title = book.title
                 authors = book.authors.map { "${it.firstName} ${it.lastName}" }
                 price = book.price
