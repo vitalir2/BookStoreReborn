@@ -32,6 +32,8 @@ dependencies {
         implementation(SharedDeps.kotlinCoroutines)
         implementation(kotlinCoroutinesJs)
         implementation(SharedDeps.kotlinSerializationJson)
+        implementation(SharedDeps.ktorClientContentNegotiation)
+        implementation(SharedDeps.ktorSerializationJson)
 
         implementation(npm("@emotion/react", "11.7.1"))
         implementation(npm("@emotion/styled", "11.6.0"))

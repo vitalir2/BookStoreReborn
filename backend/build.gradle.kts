@@ -37,7 +37,7 @@ dependencies {
         implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.3")
         implementation(ktorHtmlBuilder)
         implementation("org.jetbrains:kotlin-css-jvm:1.0.0-pre.129-kotlin-1.4.20")
-        implementation(ktorSerializationJson)
+        implementation(SharedDeps.ktorSerializationJson)
         implementation(ktorServerWebsocket)
         implementation(ktorNetty)
         implementation(logbackClassic)

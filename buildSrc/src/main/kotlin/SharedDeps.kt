@@ -5,6 +5,8 @@ object SharedDeps {
         "org.jetbrains.kotlinx:kotlinx-serialization-json:${SharedVersions.kotlinSerialization}"
     const val ktorClientCore = "io.ktor:ktor-client-core:${SharedVersions.ktor}"
     const val ktorClientLogging = "io.ktor:ktor-client-logging:${SharedVersions.ktor}"
+    const val ktorClientContentNegotiation = "io.ktor:ktor-client-content-negotiation:${SharedVersions.ktor}"
+    const val ktorSerializationJson = "io.ktor:ktor-serialization-kotlinx-json:${SharedVersions.ktor}"
     const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${SharedVersions.kotlinCoroutines}"
 }
 

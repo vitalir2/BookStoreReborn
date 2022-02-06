@@ -20,7 +20,6 @@ object BackendDeps {
     const val ktorDefaultHeaders = "io.ktor:ktor-server-default-headers:${SharedVersions.ktor}"
     const val ktorCallLogging = "io.ktor:ktor-server-call-logging:${SharedVersions.ktor}"
     const val kotlinCssJvm = "org.jetbrains.kotlin-wrappers:kotlin-css:${BackendVersions.kotlinCssJvm}"
-    const val ktorSerializationJson = "io.ktor:ktor-serialization-kotlinx-json:${SharedVersions.ktor}"
     const val ktorServerWebsocket = "io.ktor:ktor-server-websockets:${SharedVersions.ktor}"
     const val ktorServerTests = "io.ktor:ktor-server-tests:${SharedVersions.ktor}"
     const val kotlinTestJunit = "org.jetbrains.kotlin:kotlin-test-junit:${SharedVersions.kotlin}"

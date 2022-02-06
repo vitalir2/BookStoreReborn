@@ -24,7 +24,7 @@ object WebFrontendDeps {
 }
 
 object WebFrontedVersions {
-    private const val kotlinPostfix = "-pre.292-kotlin-1.6.10"
+    private const val kotlinPostfix = "-pre.293-kotlin-1.6.10"
 
     const val reactCore = "17.0.2$kotlinPostfix"
     const val reactRouter = "6.2.1$kotlinPostfix"
