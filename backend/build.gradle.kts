@@ -42,12 +42,12 @@ dependencies {
         implementation(ktorNetty)
         implementation(logbackClassic)
 
-        val exposedVersion = "0.37.3"
-        implementation("com.zaxxer:HikariCP:5.0.1")
-        implementation("org.postgresql:postgresql:42.2.2")
-        implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
-        implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
-        implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+        implementation(exposedCore)
+        implementation(exposedDao)
+        implementation(exposedJdbc)
+
+        implementation(hikariCP)
+        implementation(postgresql)
 
         testImplementation(ktorServerTests)
         testImplementation(kotlinTestJunit)
