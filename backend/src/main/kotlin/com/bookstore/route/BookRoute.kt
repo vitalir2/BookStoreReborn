@@ -5,13 +5,12 @@ import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import model.Book
 
 fun Route.bookRoute() {
     route("/book") {
         get {
-            val books = listOf(Book.TEST_BOOK, Book.TEST_BOOK)
-            call.respond(books)
+            val books = bookRepository.getBooks()
+            call.respond(HttpStatusCode.Accepted, books)
         }
         get("/{title}") {
             val title = call.parameters["title"]
