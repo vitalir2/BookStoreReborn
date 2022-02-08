@@ -42,7 +42,7 @@ object BackendDeps {
 
 object BackendVersions {
     const val logback = "1.2.10"
-    const val kotlinHtmlJvm = "0.7.2"
+    const val kotlinHtmlJvm = "0.7.3"
     const val kotlinCssJvm = "1.0.0-pre.264-kotlin-1.5.31"
     const val exposed = "0.37.3"
     const val hikariCP = "5.0.1"

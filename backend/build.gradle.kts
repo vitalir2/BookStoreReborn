@@ -1,11 +1,7 @@
-val ktor_version = "2.0.0-beta-1"
-val kotlin_version = "1.6.10"
-val logback_version = "1.2.3"
-
 plugins {
     application
     kotlin("jvm")
-    kotlin("plugin.serialization")
+    kotlin(Plugins.kotlinSerialization)
 }
 
 repositories {
@@ -34,13 +30,14 @@ dependencies {
         implementation(ktorDefaultHeaders)
         implementation(ktorCallLogging)
         implementation(ktorCors)
-        implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.3")
         implementation(ktorHtmlBuilder)
-        implementation("org.jetbrains:kotlin-css-jvm:1.0.0-pre.129-kotlin-1.4.20")
         implementation(SharedDeps.ktorSerializationJson)
         implementation(ktorServerWebsocket)
         implementation(ktorNetty)
         implementation(logbackClassic)
+
+        implementation(kotlinHtmlJvm)
+        implementation(kotlinCssJvm)
 
         implementation(exposedCore)
         implementation(exposedDao)
