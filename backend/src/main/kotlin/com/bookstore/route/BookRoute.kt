@@ -1,14 +1,11 @@
 package com.bookstore.route
 
-import com.bookstore.data.model.Books
-import com.bookstore.data.model.toModel
+import com.bookstore.data.repository.bookRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import model.Book
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Route.bookRoute() {
     route("/book") {
@@ -18,19 +15,11 @@ fun Route.bookRoute() {
         }
         get("/{title}") {
             val title = call.parameters["title"]
-            if (title == null) {
-                call.respond(HttpStatusCode.BadRequest)
-                return@get
-            }
+                ?: return@get call.respond(HttpStatusCode.BadRequest)
 
-            val book = transaction {
-                Books.select { Books.title eq title }.limit(1).map { Books.toModel(it) }.firstOrNull()
-            }
+            val book = bookRepository.getBookByTitle(title)
+                ?: return@get call.respond(HttpStatusCode.NotFound)
 
-            if (book == null) {
-                call.respond(HttpStatusCode.NotFound)
-                return@get
-            }
             call.respond(HttpStatusCode.Accepted, book)
         }
     }
