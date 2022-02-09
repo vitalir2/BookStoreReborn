@@ -1,6 +1,7 @@
 plugins {
     kotlin("js")
     kotlin(Plugins.kotlinSerialization)
+    id(Plugins.kotlinJsLegacyUnion) version PluginsVersion.kotlinJsLegacyUnion
 }
 
 repositories {

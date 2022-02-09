@@ -39,20 +39,7 @@ kotlin {
         }
         val jvmMain by getting
         val jvmTest by getting
-        val jsMain by getting {
-            dependencies {
-                with(WebFrontendDeps) {
-                    implementation(reactCore)
-                    implementation(reactDom)
-                    implementation(reactRouter)
-                    implementation(reactRedux)
-
-                    implementation(redux)
-
-                    implementation(styled)
-                }
-            }
-        }
+        val jsMain by getting
         val jsTest by getting
     }
 }
