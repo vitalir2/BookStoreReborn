@@ -1,0 +1,10 @@
+FROM openjdk:8-jdk
+EXPOSE 8080:8080
+
+RUN mkdir /app
+RUN mkdir /app/webfrontend
+
+WORKDIR /app/webfrontend
+COPY . .
+
+RUN ./gradlew :webfrontend:run
