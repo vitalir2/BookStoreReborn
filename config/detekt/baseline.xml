@@ -1,0 +1,179 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>EnumNaming:MuiCarouselExt.kt$CarouselAnimation.fade$fade</ID>
+    <ID>EnumNaming:MuiCarouselExt.kt$CarouselAnimation.slide$slide</ID>
+    <ID>Filename:components.thirdparty.MuiCarouselExt.kt:1</ID>
+    <ID>FinalNewline:BackendDeps.kt:1</ID>
+    <ID>FinalNewline:Plugins.kt:1</ID>
+    <ID>FinalNewline:SharedDeps.kt:1</ID>
+    <ID>FinalNewline:WebFrontendDeps.kt:1</ID>
+    <ID>FinalNewline:com.bookstore.data.model.Books.kt:1</ID>
+    <ID>FinalNewline:com.bookstore.plugins.CORS.kt:1</ID>
+    <ID>FinalNewline:com.bookstore.plugins.Http.kt:1</ID>
+    <ID>FinalNewline:com.bookstore.plugins.Route.kt:1</ID>
+    <ID>FinalNewline:com.bookstore.route.BookRoute.kt:1</ID>
+    <ID>FinalNewline:components.BookStoreLogo.kt:1</ID>
+    <ID>FinalNewline:components.Header.kt:1</ID>
+    <ID>FinalNewline:components.SearchBar.kt:1</ID>
+    <ID>FinalNewline:model.Book.kt:1</ID>
+    <ID>FinalNewline:page.CartPage.kt:1</ID>
+    <ID>FinalNewline:page.LoginPage.kt:1</ID>
+    <ID>FinalNewline:style.Colors.kt:1</ID>
+    <ID>ForbiddenComment:BookCalls.kt$// TODO: Change to DI like KodeIn</ID>
+    <ID>ForbiddenComment:Books.kt$Books$// TODO: change to Enum with many types of books (online, hardcover..)</ID>
+    <ID>ForbiddenComment:SearchBar.kt$// TODO: Do search</ID>
+    <ID>ImportOrdering:com.bookstore.data.database.DatabaseFactory.kt:3</ID>
+    <ID>MagicNumber:BookCalls.kt$GetBooksUseCaseImpl$400</ID>
+    <ID>MagicNumber:BookCalls.kt$GetBooksUseCaseImpl$600</ID>
+    <ID>MagicNumber:BookCarousel.kt$100</ID>
+    <ID>MagicNumber:BookCarousel.kt$150</ID>
+    <ID>MagicNumber:BookCarousel.kt$200</ID>
+    <ID>MagicNumber:BookCarousel.kt$4</ID>
+    <ID>MagicNumber:BookCarousel.kt$400</ID>
+    <ID>MagicNumber:BookCarousel.kt$800</ID>
+    <ID>MagicNumber:BookStoreTheme.kt$1.5</ID>
+    <ID>MagicNumber:BookStoreTheme.kt$16</ID>
+    <ID>MagicNumber:Books.kt$Books$200</ID>
+    <ID>MagicNumber:Books.kt$Books$3</ID>
+    <ID>MagicNumber:DatabaseFactory.kt$15.19</ID>
+    <ID>MagicNumber:DatabaseFactory.kt$2008</ID>
+    <ID>MagicNumber:DatabaseFactory.kt$3</ID>
+    <ID>MagicNumber:Extensions.kt$0.0625</ID>
+    <ID>MatchingDeclarationName:MuiCarouselExt.kt$CarouselAnimation</ID>
+    <ID>MaxLineLength:Application.kt$@Suppress("unused")</ID>
+    <ID>MaxLineLength:DatabaseFactory.kt$ But if she is to win, she will have to start making choices that weigh
+      survival against humanity and life against love.
+    </ID>
+    <ID>MaxLineLength:DatabaseFactory.kt$ In the ruins of a place once known as North America lies the nation of Panem,
+      a shining Capitol surrounded
+    </ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$*</ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$/**</ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$/** Defines if `onChange` prop will be called when the carousel
+      renders for the first time. In `componentDidMount` */
+    </ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$/** Defines if the next button will be visible on the last slide, and
+      the previous button on the first slide. Auto-play also stops on the last slide. Indicators continue to work
+      normally. */
+    </ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$/** Defines if the the next/previous button wrappers will cover the
+      full height of the Item element and show buttons on full height hover */
+    </ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$/** Defines the duration of the animations. For more information
+      refer to the [Material UI Documentation for Transitions](https://material-ui.com/components/transitions/) */
+    </ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$/** Defines which child (assuming there are more than 1 children)
+      will be displayed. Next and Previous Buttons as well as Indicators will work normally after the first render. When
+      this prop is updated the carousel will display the chosen child. Use this prop to programmatically set the active
+      child. If (index &gt; children.length) then if (strictIndexing) index = last element. index */
+    </ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$/** Function that is called **after** internal `next()` method. First
+      argument is the child **we are going to display**, while the second argument is the child **that was previously
+      displayed** */
+    </ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$/** Function that is called **after** internal `prev()` method. First
+      argument is the child **we are going to display**, while the second argument is the child **that was previously
+      displayed** */
+    </ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$/** Used to customize the div surrounding the nav `IconButtons`. Use
+      this to position the buttons onto, below, outside, e.t.c. the carousel. */
+    </ID>
+    <ID>MaxLineLength:MuiCarousel.kt$CarouselProps$var</ID>
+    <ID>MaximumLineLength:MuiCarousel.kt:74</ID>
+    <ID>MaximumLineLength:com.bookstore.Application.kt:14</ID>
+    <ID>NewLineAtEndOfFile:BackendDeps.kt$.BackendDeps.kt</ID>
+    <ID>NewLineAtEndOfFile:Book.kt$model.Book.kt</ID>
+    <ID>NewLineAtEndOfFile:BookRoute.kt$com.bookstore.route.BookRoute.kt</ID>
+    <ID>NewLineAtEndOfFile:BookStoreLogo.kt$components.BookStoreLogo.kt</ID>
+    <ID>NewLineAtEndOfFile:Books.kt$com.bookstore.data.model.Books.kt</ID>
+    <ID>NewLineAtEndOfFile:CORS.kt$com.bookstore.plugins.CORS.kt</ID>
+    <ID>NewLineAtEndOfFile:CartPage.kt$page.CartPage.kt</ID>
+    <ID>NewLineAtEndOfFile:Colors.kt$style.Colors.kt</ID>
+    <ID>NewLineAtEndOfFile:Header.kt$components.Header.kt</ID>
+    <ID>NewLineAtEndOfFile:Http.kt$com.bookstore.plugins.Http.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginPage.kt$page.LoginPage.kt</ID>
+    <ID>NewLineAtEndOfFile:Plugins.kt$.Plugins.kt</ID>
+    <ID>NewLineAtEndOfFile:Route.kt$com.bookstore.plugins.Route.kt</ID>
+    <ID>NewLineAtEndOfFile:SearchBar.kt$components.SearchBar.kt</ID>
+    <ID>NewLineAtEndOfFile:SharedDeps.kt$.SharedDeps.kt</ID>
+    <ID>NewLineAtEndOfFile:WebFrontendDeps.kt$.WebFrontendDeps.kt</ID>
+    <ID>NoBlankLineBeforeRbrace:BackendDeps.kt:40</ID>
+    <ID>NoBlankLineBeforeRbrace:components.SearchBar.kt:43</ID>
+    <ID>NoBlankLineBeforeRbrace:page.CartPage.kt:7</ID>
+    <ID>NoBlankLineBeforeRbrace:page.LoginPage.kt:7</ID>
+    <ID>NoConsecutiveBlankLines:MuiCarousel.kt:116</ID>
+    <ID>NoWildcardImports:client.BookCalls.kt:3</ID>
+    <ID>NoWildcardImports:client.BookCalls.kt:4</ID>
+    <ID>NoWildcardImports:client.BookCalls.kt:5</ID>
+    <ID>NoWildcardImports:client.BookCalls.kt:6</ID>
+    <ID>NoWildcardImports:client.HttpClient.kt:4</ID>
+    <ID>NoWildcardImports:client.HttpClient.kt:5</ID>
+    <ID>NoWildcardImports:client.HttpClient.kt:6</ID>
+    <ID>NoWildcardImports:com.bookstore.Application.kt:8</ID>
+    <ID>NoWildcardImports:com.bookstore.config.AppConfig.kt:3</ID>
+    <ID>NoWildcardImports:com.bookstore.plugins.CORS.kt:3</ID>
+    <ID>NoWildcardImports:com.bookstore.plugins.CORS.kt:4</ID>
+    <ID>NoWildcardImports:com.bookstore.plugins.CORS.kt:5</ID>
+    <ID>NoWildcardImports:com.bookstore.plugins.Http.kt:3</ID>
+    <ID>NoWildcardImports:com.bookstore.plugins.Http.kt:4</ID>
+    <ID>NoWildcardImports:com.bookstore.plugins.Http.kt:5</ID>
+    <ID>NoWildcardImports:com.bookstore.plugins.Route.kt:4</ID>
+    <ID>NoWildcardImports:com.bookstore.plugins.Route.kt:5</ID>
+    <ID>NoWildcardImports:com.bookstore.plugins.Route.kt:6</ID>
+    <ID>NoWildcardImports:com.bookstore.route.BookRoute.kt:4</ID>
+    <ID>NoWildcardImports:com.bookstore.route.BookRoute.kt:5</ID>
+    <ID>NoWildcardImports:com.bookstore.route.BookRoute.kt:6</ID>
+    <ID>NoWildcardImports:com.bookstore.route.BookRoute.kt:7</ID>
+    <ID>NoWildcardImports:components.Header.kt:3</ID>
+    <ID>NoWildcardImports:components.Header.kt:7</ID>
+    <ID>NoWildcardImports:components.SearchBar.kt:8</ID>
+    <ID>VariableNaming:MuiCarousel.kt$CarouselProps$/** Defines the element inside the indicator `IconButton`s Refer to
+      [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples. * It is advised
+      to use Material UI Icons, but you could use any element (`&lt;img/&gt;`, `&lt;div/&gt;`, ...) you like.*/ var
+      IndicatorIcon: ReactNode?
+    </ID>
+    <ID>VariableNaming:MuiCarousel.kt$CarouselProps$/** Defines the element inside the nav "next" `IconButton`. Refer to
+      [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples. * It is advised
+      to use Material UI Icons, but you could use any element (`&lt;img/&gt;`, `&lt;div/&gt;`, ...) you like. */ var
+      NextIcon: ReactNode?
+    </ID>
+    <ID>VariableNaming:MuiCarousel.kt$CarouselProps$/** Defines the element inside the nav "prev" `IconButton`. Refer to
+      [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples. * It is advised
+      to use Material UI Icons, but you could use any element (`&lt;img/&gt;`, `&lt;div/&gt;`, ...) you like. */ var
+      PrevIcon: ReactNode?
+    </ID>
+    <ID>VariableNaming:MuiCarousel.kt$CarouselProps$/** Gives full control of the nav buttons. Should return a button
+      that uses the given `onClick`. * Works in tandem with all other customization options (`navButtonsProps`,
+      `navButtonsWrapperProps`, `navButtonsAlwaysVisible`, `navButtonsAlwaysInvisible`, `fullHeightHover` ...). * Refer
+      to the [example section](README.md) for more information */ var NavButton: dynamic // (onClick: Function, next,
+      prev: Boolean, style: React.CSSProps, className: String) -&gt; ReactNode | undefined
+    </ID>
+    <ID>WildcardImport:AppConfig.kt$import io.ktor.server.config.*</ID>
+    <ID>WildcardImport:Application.kt$import io.ktor.server.application.*</ID>
+    <ID>WildcardImport:BookCalls.kt$import io.ktor.client.call.*</ID>
+    <ID>WildcardImport:BookCalls.kt$import io.ktor.client.request.*</ID>
+    <ID>WildcardImport:BookCalls.kt$import io.ktor.client.statement.*</ID>
+    <ID>WildcardImport:BookCalls.kt$import io.ktor.http.*</ID>
+    <ID>WildcardImport:BookRoute.kt$import io.ktor.http.*</ID>
+    <ID>WildcardImport:BookRoute.kt$import io.ktor.server.application.*</ID>
+    <ID>WildcardImport:BookRoute.kt$import io.ktor.server.response.*</ID>
+    <ID>WildcardImport:BookRoute.kt$import io.ktor.server.routing.*</ID>
+    <ID>WildcardImport:CORS.kt$import io.ktor.http.*</ID>
+    <ID>WildcardImport:CORS.kt$import io.ktor.server.application.*</ID>
+    <ID>WildcardImport:CORS.kt$import io.ktor.server.plugins.*</ID>
+    <ID>WildcardImport:Header.kt$import csstype.*</ID>
+    <ID>WildcardImport:Header.kt$import mui.material.*</ID>
+    <ID>WildcardImport:Http.kt$import io.ktor.serialization.kotlinx.json.*</ID>
+    <ID>WildcardImport:Http.kt$import io.ktor.server.application.*</ID>
+    <ID>WildcardImport:Http.kt$import io.ktor.server.plugins.*</ID>
+    <ID>WildcardImport:HttpClient.kt$import io.ktor.client.plugins.*</ID>
+    <ID>WildcardImport:HttpClient.kt$import io.ktor.client.plugins.logging.*</ID>
+    <ID>WildcardImport:HttpClient.kt$import io.ktor.serialization.kotlinx.json.*</ID>
+    <ID>WildcardImport:Route.kt$import io.ktor.server.application.*</ID>
+    <ID>WildcardImport:Route.kt$import io.ktor.server.html.*</ID>
+    <ID>WildcardImport:Route.kt$import io.ktor.server.routing.*</ID>
+    <ID>WildcardImport:SearchBar.kt$import mui.material.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
