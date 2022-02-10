@@ -39,6 +39,7 @@ jobs:
     - name: Run Detekt on the whole project
       run: ./gradlew detektAll
     - name: Upload Detekt report
+      if: always()
       uses: actions/upload-artifact@v2
       with:
         name: detekt-report
