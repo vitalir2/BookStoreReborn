@@ -1,5 +1,6 @@
 @file:JsModule("react-material-ui-carousel")
 @file:JsNonModule
+@file:Suppress("MaxLineLength")
 
 import components.thirdparty.CarouselAnimation
 import react.FC
@@ -62,15 +63,18 @@ external interface CarouselProps : PropsWithChildren {
 
     /** Defines the element inside the nav "next" `IconButton`. Refer to [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples.
      * It is advised to use Material UI Icons, but you could use any element (`<img/>`, `<div/>`, ...) you like. */
+    @Suppress("VariableNaming")
     var NextIcon: ReactNode?
 
     /** Defines the element inside the nav "prev" `IconButton`. Refer to [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples.
      * It is advised to use Material UI Icons, but you could use any element (`<img/>`, `<div/>`, ...) you like. */
+    @Suppress("VariableNaming")
     var PrevIcon: ReactNode?
 
     /** Gives full control of the nav buttons. Should return a button that uses the given `onClick`.
      * Works in tandem with all other customization options (`navButtonsProps`, `navButtonsWrapperProps`, `navButtonsAlwaysVisible`, `navButtonsAlwaysInvisible`, `fullHeightHover` ...).
      * Refer to the [example section](README.md) for more information */
+    @Suppress("VariableNaming")
     var NavButton: dynamic // (onClick: Function, next, prev: Boolean, style: React.CSSProps, className: String) -> ReactNode | undefined
 
     /** Used to customize the indicators container/wrapper.
@@ -102,6 +106,7 @@ external interface CarouselProps : PropsWithChildren {
 
     /** Defines the element inside the indicator `IconButton`s Refer to [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples.
      * It is advised to use Material UI Icons, but you could use any element (`<img/>`, `<div/>`, ...) you like.*/
+    @Suppress("VariableNaming")
     var IndicatorIcon: ReactNode?
 }
 
@@ -112,4 +117,3 @@ external interface CarouselNavProps : PropsWithClassName, PropsWithStyle, AriaAt
  */
 @JsName("default")
 external val Carousel: FC<CarouselProps>
-
