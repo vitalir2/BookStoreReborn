@@ -7,4 +7,4 @@ RUN mkdir /app/webfrontend
 WORKDIR /app/webfrontend
 COPY . .
 
-RUN ./gradlew :webfrontend:run
+RUN ./gradlew :webfrontend:build

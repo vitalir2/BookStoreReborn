@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  webfrontend:
+    container_name: bookstore-webfrontend
+    build:
+      context: .
+      dockerfile: Dockerfile.webfrontend
+    command: ./gradlew :webfrontend:run
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      - backend
+  backend:
+    container_name: bookstore-backend
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "127.0.0.1:8081:8081"
+    environment:
+      - DB_SERVER=bookstore-postgres:5432
+    depends_on:
+      - postgresql
+  postgresql:
+    image: "postgres:14.1-alpine3.15"
+    container_name: bookstore-postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - /var/lib/postgres/data:/var/lib/postgres/data
+    environment:
+      - POSTGRES_DB=bookstore_db
+      - POSTGRES_USER=vitalir
+      - POSTGRES_PASSWORD=1234
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
