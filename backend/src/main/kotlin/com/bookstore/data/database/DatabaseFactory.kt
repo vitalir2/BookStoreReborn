@@ -1,5 +1,6 @@
 package com.bookstore.data.database
 
+import com.bookstore.config.AppConfig
 import com.bookstore.data.model.Books
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -51,12 +52,12 @@ val database by lazy {
 private fun createDatabase(): Database = Database.connect(createDataSource())
 
 private fun createDataSource(): DataSource {
-    // TODO: look in app config
+    val appConfig = AppConfig.instance
     val hikariConfig = HikariConfig().apply {
         driverClassName = "org.postgresql.Driver"
-        jdbcUrl = "jdbc:postgresql://localhost:5432/bookstore_db"
-        username = "vitalir"
-        password = "1234"
+        jdbcUrl = "jdbc:postgresql://${appConfig.databaseServer}/bookstore_db"
+        username = appConfig.databaseUsername
+        password = appConfig.databaseUserPassword
         maximumPoolSize = 3
         isAutoCommit = false
         transactionIsolation = "TRANSACTION_REPEATABLE_READ"
