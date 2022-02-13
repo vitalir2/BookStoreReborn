@@ -2,15 +2,16 @@ package com.bookstore.data.database
 
 import com.bookstore.config.AppConfig
 import com.bookstore.data.model.Books
+import com.bookstore.data.repository.bookRepository
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import javax.sql.DataSource
+import model.Book
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
 import org.jetbrains.exposed.sql.exposedLogger
-import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
@@ -22,13 +23,15 @@ val database by lazy {
         SchemaUtils.drop(Books)
         SchemaUtils.create(Books)
 
-        Books.insert {
-            it[title] = "The Hunger Games"
-            it[year] = 2008
-            it[priceDollars] = 15.19
-            it[type] = 1 // Hardcover
-            it[pictureUrl] = "https://images-na.ssl-images-amazon.com/images/I/41V56ye3PrL._SX328_BO1,204,203,200_.jpg"
-            it[description] = """
+        bookRepository.insert(
+            Book(
+                bookId = 1,
+                title = "The Hunger Games",
+                year = 2008,
+                price = 15.19,
+                type = 1, // Hardcover
+                pictureUrl = "https://images-na.ssl-images-amazon.com/images/I/41V56ye3PrL._SX328_BO1,204,203,200_.jpg",
+                description = """
                 The first novel in the worldwide bestselling series by Suzanne Collins!
                 Winning means fame and fortune. Losing means certain death. The Hunger Games have begun. . . . 
                 In the ruins of a place once known as North America lies the nation of Panem,
@@ -42,12 +45,15 @@ val database by lazy {
                 Without really meaning to, she becomes a contender. 
                 But if she is to win, she will have to start making choices that weigh survival against
                 humanity and life against love.
-            """.trimIndent()
-            it[langCode] = "ENG"
-        }
-
-        exposedLogger.debug(Books.selectAll().toString())
+                """.trimIndent(),
+                langCode = "ENG",
+                authors = emptyList(),
+                genres = emptyList(),
+            )
+        )
     }
+
+    exposedLogger.debug(Books.selectAll().toString())
     createdDatabase
 }
 
