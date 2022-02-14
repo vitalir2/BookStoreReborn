@@ -18,6 +18,7 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
+import org.jetbrains.exposed.sql.exists
 import org.jetbrains.exposed.sql.transactions.transaction
 
 private const val PREPOPULATE_BOOKS_DATA_PATH = "src/main/resources/books.json"
@@ -27,7 +28,7 @@ val database by lazy {
     val readBooksDataString = File(PREPOPULATE_BOOKS_DATA_PATH).readText(charset = Charset.defaultCharset())
     val initBooksData = Json.decodeFromJsonElement<List<BookPrepopulate>>(Json.parseToJsonElement(readBooksDataString))
     transaction {
-        SchemaUtils.drop(Books)
+        if (Books.exists()) return@transaction
         SchemaUtils.create(Books)
 
         for (book in initBooksData) {
