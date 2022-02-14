@@ -20,7 +20,7 @@ import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
 import org.jetbrains.exposed.sql.transactions.transaction
 
-private val PREPOPULATE_BOOKS_DATA_PATH = "${System.getProperty("user.dir")}/backend/src/main/resources/books.json"
+private const val PREPOPULATE_BOOKS_DATA_PATH = "src/main/resources/books.json"
 
 val database by lazy {
     val createdDatabase = createDatabase()
@@ -51,6 +51,8 @@ val database by lazy {
                 )
             )
         }
+    }
+    transaction {
         addLogger(StdOutSqlLogger)
     }
     createdDatabase
