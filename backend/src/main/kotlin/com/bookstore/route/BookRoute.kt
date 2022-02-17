@@ -9,8 +9,18 @@ import io.ktor.server.routing.*
 fun Route.bookRoute() {
     route("/book") {
         get {
-            val books = bookRepository.getBooks()
-            call.respond(HttpStatusCode.Accepted, books)
+            val queryParameters = call.request.queryParameters
+            if (queryParameters.isEmpty()) {
+                val books = bookRepository.getBooks()
+                call.respond(HttpStatusCode.Accepted, books)
+            } else {
+                val rawOffset = queryParameters["offset"] ?: "0"
+                val offset = rawOffset.toLongOrNull() ?: return@get call.respond(HttpStatusCode.BadRequest)
+                val rawLimit = queryParameters["limit"] ?: return@get call.respond(HttpStatusCode.BadRequest)
+                val limit = rawLimit.toIntOrNull() ?: return@get call.respond(HttpStatusCode.BadRequest)
+                val paginatedBooks = bookRepository.getBooksPaginated(offset, limit)
+                call.respond(HttpStatusCode.Accepted, paginatedBooks)
+            }
         }
         get("/{title}") {
             val title = call.parameters["title"]
