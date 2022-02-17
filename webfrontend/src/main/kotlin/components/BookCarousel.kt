@@ -19,6 +19,8 @@ import react.key
 
 external interface BookCarouselProps : Props {
     var carouselBooks: Array<Book>
+    var currentIndex: Int
+    var onScroll: (next: Int, prev: Int, batchSize: Int) -> Unit
 }
 
 val BookCarousel = FC<BookCarouselProps> { props ->
@@ -29,6 +31,7 @@ val BookCarousel = FC<BookCarouselProps> { props ->
         navButtonsAlwaysVisible = true
         cycleNavigation = false
         animation = CarouselAnimation.slide
+        index = props.currentIndex
 
         val books = props.carouselBooks
         if (books.isEmpty()) {
@@ -45,6 +48,9 @@ val BookCarousel = FC<BookCarouselProps> { props ->
             else -> 200
         }
         val batchSize = window.innerWidth / itemWidth - 1
+        onChange = { next: Int, prev: Int ->
+            props.onScroll(next, prev, batchSize)
+        }
         val repeatCount = books.size / batchSize + 1
         repeat(repeatCount) { index ->
             val fromIndex = index * batchSize
