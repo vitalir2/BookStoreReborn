@@ -1,3 +1,4 @@
+@file:Suppress("UnusedPrivateMember")
 plugins {
     kotlin(SharedDeps.kotlinMultiplatform)
     kotlin(Plugins.kotlinSerialization)
@@ -30,6 +31,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(SharedDeps.kotlinSerializationJson)
+                api(SharedDeps.koinCore)
             }
         }
         val commonTest by getting {

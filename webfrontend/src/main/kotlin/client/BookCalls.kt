@@ -43,7 +43,3 @@ class GetPaginatedBooksUseCaseImpl : GetPaginatedBooksUseCase {
 }
 
 private fun getPaginatedUrl(offset: Long, limit: Int): String = "$DEFAULT_HOST/book?offset=$offset&limit=$limit"
-
-// TODO: Change to DI like KodeIn
-val getBooksUseCase: GetBooksUseCase = GetBooksUseCaseImpl()
-val getPaginatedBooksUseCase: GetPaginatedBooksUseCase = GetPaginatedBooksUseCaseImpl()

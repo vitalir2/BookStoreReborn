@@ -1,6 +1,8 @@
 import components.Header
+import di.useCaseModule
 import kotlinx.browser.document
 import mui.material.styles.ThemeProvider
+import org.koin.core.context.GlobalContext.startKoin
 import page.CartPage
 import page.LoginPage
 import page.MainPage
@@ -15,6 +17,9 @@ import react.router.dom.BrowserRouter
 import style.BookStoreTheme
 
 fun main() {
+    startKoin {
+        modules(useCaseModule)
+    }
     render(
         element = MainRouter.create(),
         container = document.createElement("div").also { document.body!!.appendChild(it) }
@@ -30,7 +35,7 @@ private val MainRouter = FC<Props> {
 
                 Route {
                     index = true
-                    element = MainPage.create()
+                    element = MainPage.reactComponent.create()
                 }
 
                 Route {
