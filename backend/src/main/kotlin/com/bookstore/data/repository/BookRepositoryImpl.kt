@@ -19,6 +19,14 @@ class BookRepositoryImpl : BookRepository {
             Books.select { Books.title eq title }.limit(1).map { Books.toModel(it) }.firstOrNull()
         }
 
+    override fun getBooksPaginated(offset: Long, limit: Int): List<Book> =
+        transaction {
+            Books.selectAll().limit(
+                n = limit,
+                offset = offset
+            ).map { Books.toModel(it) }
+        }
+
     override fun insert(book: Book): Boolean {
         return transaction {
             Books.insert {
