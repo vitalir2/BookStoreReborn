@@ -3,7 +3,7 @@ package com.bookstore.data.database
 import com.bookstore.config.AppConfig
 import com.bookstore.data.model.Books
 import com.bookstore.data.repository.bookRepository
-import com.bookstore.plugins.inject
+import com.bookstore.plugins.declaration.inject
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import java.io.File
@@ -64,7 +64,7 @@ fun createDatabase(): Database {
 }
 
 fun createDataSource(): DataSource {
-    val appConfig = AppConfig.instance
+    val appConfig by inject<AppConfig>()
     val hikariConfig = HikariConfig().apply {
         driverClassName = "org.postgresql.Driver"
         jdbcUrl = "jdbc:postgresql://${appConfig.databaseServer}/bookstore_db"

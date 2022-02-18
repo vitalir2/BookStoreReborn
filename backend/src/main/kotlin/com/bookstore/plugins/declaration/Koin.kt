@@ -1,4 +1,4 @@
-package com.bookstore.plugins
+package com.bookstore.plugins.declaration
 
 import io.ktor.events.EventDefinition
 import io.ktor.server.application.*

@@ -1,6 +1,6 @@
 package com.bookstore.data.repository
 
-import com.bookstore.plugins.inject
+import com.bookstore.plugins.declaration.inject
 import model.Book
 
 val bookRepository by inject<BookRepository>()
