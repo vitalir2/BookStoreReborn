@@ -1,6 +1,9 @@
 package com.bookstore.data.repository
 
+import com.bookstore.plugins.inject
 import model.Book
+
+val bookRepository by inject<BookRepository>()
 
 interface BookRepository {
     fun getBooks(): List<Book>

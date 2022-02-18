@@ -35,6 +35,8 @@ dependencies {
         implementation(ktorServerWebsocket)
         implementation(ktorNetty)
         implementation(logbackClassic)
+        implementation(ktorKoinCore)
+        implementation(ktorKoinLogger)
 
         implementation(kotlinHtmlJvm)
         implementation(kotlinCssJvm)

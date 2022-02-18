@@ -22,6 +22,8 @@ object BackendDeps {
     const val ktorServerWebsocket = "io.ktor:ktor-server-websockets:${SharedVersions.ktor}"
     const val ktorServerTests = "io.ktor:ktor-server-tests:${SharedVersions.ktor}"
     const val ktorCors = "io.ktor:ktor-server-cors:${SharedVersions.ktor}"
+    const val ktorKoinCore = "io.insert-koin:koin-ktor:${SharedVersions.koin}"
+    const val ktorKoinLogger = "io.insert-koin:koin-logger-slf4j:${SharedVersions.koin}"
 
     // Kotlin
     const val kotlinHtmlJvm = "org.jetbrains.kotlinx:kotlinx-html-jvm:${BackendVersions.kotlinHtmlJvm}"
@@ -37,7 +39,6 @@ object BackendDeps {
     // Working with database
     const val hikariCP = "com.zaxxer:HikariCP:${BackendVersions.hikariCP}"
     const val postgresql = "org.postgresql:postgresql:${BackendVersions.postgresql}"
-
 }
 
 object BackendVersions {

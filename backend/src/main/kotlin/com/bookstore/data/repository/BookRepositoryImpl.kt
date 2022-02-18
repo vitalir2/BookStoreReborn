@@ -41,5 +41,3 @@ class BookRepositoryImpl : BookRepository {
         }.insertedCount > 0
     }
 }
-
-val bookRepository: BookRepository = BookRepositoryImpl()
