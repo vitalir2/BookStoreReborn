@@ -16,6 +16,11 @@ external interface CarouselProps : PropsWithChildren {
     /** Defines custom class name(s), that will be added to Carousel element */
     var className: String?
 
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    var sx: mui.system.SxProps<mui.system.Theme>?
+
     /** Defines which child (assuming there are more than 1 children) will be displayed. Next and Previous Buttons as well as Indicators will work normally after the first render. When this prop is updated the carousel will display the chosen child. Use this prop to programmatically set the active child. If (index > children.length) then if (strictIndexing) index = last element. index */
     var index: Number?
 
