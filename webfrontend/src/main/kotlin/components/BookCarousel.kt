@@ -1,29 +1,43 @@
 package components
 
 import Carousel
+import client.HttpClient
+import client.STANDARD_LIMIT_SCALE
+import client.STANDARD_PAGINATION_LIMIT_STARTER
+import client.STANDARD_PAGINATION_OFFSET
 import components.thirdparty.CarouselAnimation
 import csstype.Cursor
 import csstype.em
 import csstype.px
 import kotlinx.browser.window
+import kotlinx.coroutines.launch
 import model.Book
 import mui.material.Stack
 import mui.material.StackDirection
 import mui.material.Typography
 import mui.system.ResponsiveStyleValue
+import page.MainPage
 import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.img
 import react.key
+import react.useEffect
+import react.useState
 
-external interface BookCarouselProps : Props {
-    var carouselBooks: Array<Book>
-    var currentIndex: Int
-    var onScroll: (next: Int, prev: Int, batchSize: Int) -> Unit
-}
+val BookCarousel = FC<Props> {
+    val (currentIndex, setCurrentIndex) = useState(0)
+    val (books, setBooks) = useState(arrayOf<Book>())
+    val (limit, setLimit) = useState(STANDARD_PAGINATION_LIMIT_STARTER)
 
-val BookCarousel = FC<BookCarouselProps> { props ->
+    useEffect(limit) {
+        val job = HttpClient.scope.launch {
+            setBooks(MainPage.getPaginatedBooksUseCase(STANDARD_PAGINATION_OFFSET, limit))
+        }
+        cleanup {
+            job.cancel()
+        }
+    }
     Carousel {
         autoPlay = false
         indicators = false
@@ -31,9 +45,8 @@ val BookCarousel = FC<BookCarouselProps> { props ->
         navButtonsAlwaysVisible = true
         cycleNavigation = false
         animation = CarouselAnimation.slide
-        index = props.currentIndex
+        index = currentIndex
 
-        val books = props.carouselBooks
         if (books.isEmpty()) {
             Typography {
                 variant = "h2"
@@ -48,8 +61,11 @@ val BookCarousel = FC<BookCarouselProps> { props ->
             else -> 200
         }
         val batchSize = window.innerWidth / itemWidth - 1
-        onChange = { next: Int, prev: Int ->
-            props.onScroll(next, prev, batchSize)
+        onChange = { next: Int, _: Int ->
+            if (next * batchSize > (STANDARD_PAGINATION_OFFSET + limit) / 2) {
+                setCurrentIndex(next)
+                setLimit((limit * STANDARD_LIMIT_SCALE).toInt())
+            }
         }
         val repeatCount = books.size / batchSize + 1
         repeat(repeatCount) { index ->
