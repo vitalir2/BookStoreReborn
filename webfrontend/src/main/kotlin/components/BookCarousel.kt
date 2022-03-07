@@ -8,6 +8,7 @@ import components.thirdparty.CarouselAnimation
 import csstype.Cursor
 import csstype.em
 import csstype.px
+import csstype.rem
 import extension.toFixed
 import kotlinext.js.jso
 import kotlinx.browser.window
@@ -93,6 +94,9 @@ external interface BookSlideProps : Props {
 
 val BookSlide = FC<BookSlideProps> { props ->
     Stack {
+        sx = jso {
+            marginLeft = 2.rem
+        }
         direction = ResponsiveStyleValue(StackDirection.row)
         spacing = ResponsiveStyleValue(BOOK_SLIDE_SPACING)
 
