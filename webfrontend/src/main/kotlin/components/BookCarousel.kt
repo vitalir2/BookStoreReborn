@@ -1,9 +1,6 @@
 package components
 
 import Carousel
-import client.HttpClient
-import client.STANDARD_PAGINATION_LIMIT_STARTER
-import client.STANDARD_PAGINATION_OFFSET
 import components.thirdparty.CarouselAnimation
 import csstype.Cursor
 import csstype.em
@@ -12,32 +9,18 @@ import csstype.rem
 import extension.toFixed
 import kotlinext.js.jso
 import kotlinx.browser.window
-import kotlinx.coroutines.launch
 import model.Book
 import mui.material.Stack
 import mui.material.StackDirection
 import mui.material.Typography
 import mui.system.ResponsiveStyleValue
-import page.MainPage
 import react.FC
 import react.Props
 import react.css.css
 import react.dom.html.ReactHTML.img
 import react.key
-import react.useEffectOnce
-import react.useState
 
-val BookCarousel = FC<Props> {
-    val (books, setBooks) = useState(arrayOf<Book>())
-
-    useEffectOnce {
-        val job = HttpClient.scope.launch {
-            setBooks(MainPage.getPaginatedBooksUseCase(STANDARD_PAGINATION_OFFSET, STANDARD_PAGINATION_LIMIT_STARTER))
-        }
-        cleanup {
-            job.cancel()
-        }
-    }
+val BookCarousel = FC<BookCarouselProps> { props ->
     Carousel {
         sx = jso {
             margin = 1.em
@@ -49,6 +32,7 @@ val BookCarousel = FC<Props> {
         cycleNavigation = true
         animation = CarouselAnimation.slide
 
+        val books = props.books
         if (books.isEmpty()) {
             Typography {
                 variant = "h2"
@@ -66,6 +50,10 @@ val BookCarousel = FC<Props> {
             }
         }
     }
+}
+
+external interface BookCarouselProps : Props {
+    var books: Array<Book>
 }
 
 private data class BookSlideMetrics(
