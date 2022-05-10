@@ -9,6 +9,7 @@ val configurationModule = module {
             databaseServer = getProperty("ktor.database.server"),
             databaseUsername = getProperty("ktor.database.username"),
             databaseUserPassword = getProperty("ktor.database.password"),
+            baseDbInitPath = getProperty("ktor.database.base_init_path")
         )
     }
 }

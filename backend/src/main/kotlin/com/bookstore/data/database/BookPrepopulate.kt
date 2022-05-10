@@ -1,7 +1,13 @@
+@file:Suppress("ImportOrdering")
+
 package com.bookstore.data.database
 
+import java.time.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import model.Author
+import model.Book
+import model.Genre
 
 @Serializable
 data class BookPrepopulate(
@@ -16,3 +22,24 @@ data class BookPrepopulate(
     val edition: String?,
     val genres: List<String>,
 )
+
+internal fun BookPrepopulate.toMainModel(): Book =
+    Book(
+        title = title,
+        description = description,
+        pictureUrl = imageUrl,
+        authors = authors.map(::createAuthorFromName),
+        genres = genres.map { genreName ->
+            Genre(
+                name = genreName
+            )
+        }
+    )
+
+// FirstName.LastName
+private fun createAuthorFromName(authorName: String): Author =
+    Author(
+        firstName = authorName.takeWhile { it != ' ' },
+        lastName = authorName.takeLastWhile { it != ' ' },
+        bornDate = LocalDate.now().toEpochDay()
+    )

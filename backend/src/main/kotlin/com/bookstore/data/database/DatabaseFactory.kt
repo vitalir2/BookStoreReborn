@@ -5,62 +5,62 @@ import com.bookstore.data.model.Books
 import com.bookstore.data.repository.BookRepository
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import io.ktor.utils.io.errors.*
 import java.io.File
 import java.nio.charset.Charset
-import java.time.LocalDate
 import javax.sql.DataSource
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromJsonElement
-import model.Author
-import model.Book
-import model.Genre
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
 import org.jetbrains.exposed.sql.exists
+import org.jetbrains.exposed.sql.exposedLogger
 import org.jetbrains.exposed.sql.transactions.TransactionManager
 import org.jetbrains.exposed.sql.transactions.transaction
 
-private const val PREPOPULATE_BOOKS_DATA_PATH = "src/main/resources/books.json"
-
-fun createDatabase(dataSource: DataSource, bookRepository: BookRepository): Database {
+fun createDatabase(
+    dataSource: DataSource,
+    bookRepository: BookRepository,
+    baseDbInitPath: String
+): Database {
     val database = Database.connect(dataSource)
-    val readBooksDataString = File(PREPOPULATE_BOOKS_DATA_PATH).readText(charset = Charset.defaultCharset())
-    val initBooksData = Json.decodeFromJsonElement<List<BookPrepopulate>>(
-        Json.parseToJsonElement(readBooksDataString)
-    )
-    transaction {
-        if (Books.exists()) return@transaction
-        SchemaUtils.create(Books)
-
-        for (book in initBooksData) {
-            bookRepository.insert(
-                Book(
-                    title = book.title,
-                    description = book.description,
-                    pictureUrl = book.imageUrl,
-                    authors = book.authors.map { authorName ->
-                        Author(
-                            firstName = authorName.takeWhile { it != ' ' },
-                            lastName = authorName.takeLastWhile { it != ' ' },
-                            bornDate = LocalDate.now().toEpochDay(),
-                        )
-                    },
-                    genres = book.genres.map { genreName ->
-                        Genre(
-                            name = genreName,
-                        )
-                    }
-                )
-            )
-        }
-    }
+    tryInitBooksScheme(baseDbInitPath, bookRepository)
     transaction {
         addLogger(StdOutSqlLogger)
     }
     TransactionManager.defaultDatabase = database
     return database
+}
+
+private fun tryInitBooksScheme(
+    baseDbInitPath: String,
+    bookRepository: BookRepository
+) {
+    val initBooksData = tryReadInitBooksFile(baseDbInitPath)
+    transaction {
+        if (Books.exists()) return@transaction
+        SchemaUtils.create(Books)
+
+        for (initBook in initBooksData) {
+            bookRepository.insert(initBook.toMainModel())
+        }
+    }
+}
+
+private fun tryReadInitBooksFile(baseDbInitPath: String): List<BookPrepopulate> {
+    val readBooksDataString1: String
+    try {
+        readBooksDataString1 = File("$baseDbInitPath/books.json").readText(charset = Charset.defaultCharset())
+    } catch (ex: IOException) {
+        exposedLogger.error("Cannot read $baseDbInitPath/books.json, current dir is ${(File(".").absolutePath)}")
+        exposedLogger.error("Error message: ${ex.message}")
+        return emptyList()
+    }
+    return Json.decodeFromJsonElement(
+        Json.parseToJsonElement(readBooksDataString1)
+    )
 }
 
 fun createDataSource(appConfig: AppConfig): DataSource {

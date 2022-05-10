@@ -1,0 +1,5 @@
+FROM nginx:latest
+
+EXPOSE 8080:8080
+
+COPY webfrontend/build/distributions /usr/share/nginx/html

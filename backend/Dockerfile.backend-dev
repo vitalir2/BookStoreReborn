@@ -4,7 +4,9 @@ EXPOSE 8081:8081
 RUN mkdir /app
 RUN mkdir /app/backend
 
-COPY ./backend/build/install/backend/ /app/backend
+COPY backend/build/install/backend/ /app/backend
 
 WORKDIR /app/backend/bin
+COPY backend/src/main/resources/books.json .
+
 CMD ["./backend"]
