@@ -2,8 +2,7 @@ package com.bookstore.data.database
 
 import com.bookstore.config.AppConfig
 import com.bookstore.data.model.Books
-import com.bookstore.data.repository.bookRepository
-import com.bookstore.plugins.declaration.inject
+import com.bookstore.data.repository.BookRepository
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import java.io.File
@@ -25,11 +24,12 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 private const val PREPOPULATE_BOOKS_DATA_PATH = "src/main/resources/books.json"
 
-fun createDatabase(): Database {
-    val dataSource by inject<DataSource>()
+fun createDatabase(dataSource: DataSource, bookRepository: BookRepository): Database {
     val database = Database.connect(dataSource)
     val readBooksDataString = File(PREPOPULATE_BOOKS_DATA_PATH).readText(charset = Charset.defaultCharset())
-    val initBooksData = Json.decodeFromJsonElement<List<BookPrepopulate>>(Json.parseToJsonElement(readBooksDataString))
+    val initBooksData = Json.decodeFromJsonElement<List<BookPrepopulate>>(
+        Json.parseToJsonElement(readBooksDataString)
+    )
     transaction {
         if (Books.exists()) return@transaction
         SchemaUtils.create(Books)
@@ -63,8 +63,7 @@ fun createDatabase(): Database {
     return database
 }
 
-fun createDataSource(): DataSource {
-    val appConfig by inject<AppConfig>()
+fun createDataSource(appConfig: AppConfig): DataSource {
     val hikariConfig = HikariConfig().apply {
         driverClassName = "org.postgresql.Driver"
         jdbcUrl = "jdbc:postgresql://${appConfig.databaseServer}/bookstore_db"

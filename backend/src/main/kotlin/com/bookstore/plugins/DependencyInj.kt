@@ -1,16 +1,16 @@
 package com.bookstore.plugins
 
-import com.bookstore.plugins.declaration.KoinPlugin
 import com.bookstore.plugins.di.configurationModule
 import com.bookstore.plugins.di.databaseModule
 import com.bookstore.plugins.di.repositoryModule
 import com.typesafe.config.ConfigException
 import io.ktor.server.application.*
 import io.ktor.server.config.*
+import org.koin.ktor.plugin.koin
 import org.koin.logger.SLF4JLogger
 
 fun Application.configureDI(applicationConfig: ApplicationConfig) {
-    install(KoinPlugin) {
+    koin {
         SLF4JLogger()
         properties(applicationConfig.toProperties())
         modules(configurationModule, databaseModule, repositoryModule)

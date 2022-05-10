@@ -5,6 +5,6 @@ import com.bookstore.data.database.createDatabase
 import org.koin.dsl.module
 
 val databaseModule = module {
-    single(createdAtStart = true) { createDataSource() }
-    single(createdAtStart = true) { createDatabase() }
+    single(createdAtStart = true) { createDataSource(get()) }
+    single(createdAtStart = true) { createDatabase(get(), get()) }
 }

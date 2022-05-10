@@ -12,9 +12,9 @@ object SharedDeps {
 }
 
 object SharedVersions {
-    const val kotlin = "1.6.10"
+    const val kotlin = "1.6.21"
     const val kotlinSerialization = "1.3.2"
-    const val ktor = "2.0.0-beta-1"
+    const val ktor = "2.0.1"
     const val kotlinCoroutines = "1.6.0"
-    const val koin = "3.1.5"
+    const val koin = "3.2.0"
 }

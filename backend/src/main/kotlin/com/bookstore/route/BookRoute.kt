@@ -1,12 +1,14 @@
 package com.bookstore.route
 
-import com.bookstore.data.repository.bookRepository
+import com.bookstore.data.repository.BookRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import org.koin.ktor.ext.inject
 
 fun Route.bookRoute() {
+    val bookRepository by inject<BookRepository>()
     route("/book") {
         get {
             val queryParameters = call.request.queryParameters
