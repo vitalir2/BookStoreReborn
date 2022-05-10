@@ -10,6 +10,14 @@ repositories {
     maven { url = uri("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers") }
 }
 
+kotlin {
+    target {
+        compilations.all {
+            kotlinOptions.jvmTarget = "11"
+        }
+    }
+}
+
 dependencies {
     implementation(project(":shared"))
     with(BackendDeps) {
