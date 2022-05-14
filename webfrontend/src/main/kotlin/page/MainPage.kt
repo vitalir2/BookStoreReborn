@@ -4,8 +4,8 @@ import client.GetPaginatedBooksUseCase
 import client.HttpClient
 import client.STANDARD_PAGINATION_LIMIT_STARTER
 import client.STANDARD_PAGINATION_OFFSET
-import components.BookCarousel
 import components.BookCarouselHeader
+import components.bookcarousel.BookCarousel
 import kotlinx.coroutines.launch
 import model.Book
 import org.koin.core.component.KoinComponent

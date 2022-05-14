@@ -3,6 +3,7 @@
 @file:Suppress("MaxLineLength")
 
 import components.thirdparty.CarouselAnimation
+import mui.system.PropsWithSx
 import react.FC
 import react.PropsWithChildren
 import react.PropsWithClassName
@@ -10,19 +11,17 @@ import react.PropsWithStyle
 import react.ReactNode
 import react.dom.aria.AriaAttributes
 
-external interface CarouselProps : PropsWithChildren {
+external interface CarouselProps : PropsWithChildren, PropsWithSx {
     override var children: ReactNode?
 
     /** Defines custom class name(s), that will be added to Carousel element */
     var className: String?
 
-    /**
-     * The system prop that allows defining system overrides as well as additional CSS styles.
-     */
-    var sx: mui.system.SxProps<mui.system.Theme>?
-
     /** Defines which child (assuming there are more than 1 children) will be displayed. Next and Previous Buttons as well as Indicators will work normally after the first render. When this prop is updated the carousel will display the chosen child. Use this prop to programmatically set the active child. If (index > children.length) then if (strictIndexing) index = last element. index */
     var index: Number?
+
+    /** Defines the carousel's height in `px`. If this is not set, the carousel's height will be the height of its children. */
+    var height: dynamic
 
     /** Defines whether index can be bigger than children length */
     var strictIndexing: Boolean?
