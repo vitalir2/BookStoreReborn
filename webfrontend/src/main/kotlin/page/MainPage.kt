@@ -15,7 +15,7 @@ import react.Props
 import react.useEffectOnce
 import react.useState
 
-object MainPage : PageObject, KoinComponent {
+object MainPage : PageObject<Props>, KoinComponent {
     val getPaginatedBooksUseCase by inject<GetPaginatedBooksUseCase>()
     override val reactComponent = FC<Props> {
         val (stateBooks, setBooks) = useState(arrayOf<Book>())

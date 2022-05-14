@@ -11,20 +11,24 @@ import mui.system.responsive
 import react.FC
 import react.Props
 import react.dom.html.ReactHTML
+import react.router.dom.Link
 
 val BookItem = FC<BookProps> { props ->
     Stack {
         direction = responsive(StackDirection.column)
         spacing = responsive(1)
 
-        ReactHTML.img {
-            css {
-                width = props.width
-                height = props.height
-                cursor = Cursor.pointer
-            }
+        Link {
+            to = "books/123" // TODO @vitalir: Set book ID
+            ReactHTML.img {
+                css {
+                    width = props.width
+                    height = props.height
+                    cursor = Cursor.pointer
+                }
 
-            src = props.imageUrl
+                src = props.imageUrl
+            }
         }
         Typography {
             +props.title

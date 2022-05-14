@@ -6,6 +6,7 @@ import org.koin.core.context.GlobalContext.startKoin
 import page.CartPage
 import page.LoginPage
 import page.MainPage
+import page.description.BookDescriptionPage
 import react.FC
 import react.Props
 import react.create
@@ -45,6 +46,10 @@ private val MainRouter = FC<Props> {
                 Route {
                     path = "login"
                     element = LoginPage.create()
+                }
+                Route {
+                    path = "books/:bookId"
+                    element = BookDescriptionPage.reactComponent.create()
                 }
             }
         }
