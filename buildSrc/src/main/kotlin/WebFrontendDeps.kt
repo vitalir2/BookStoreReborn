@@ -20,14 +20,10 @@ object WebFrontendDeps {
     val ktorClientJs = "io.ktor:ktor-client-js:${SharedVersions.ktor}"
     val kotlinCoroutinesJs = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:${SharedVersions.kotlinCoroutines}"
 
-    val kotlinJs = "stdlib-js"
+    const val kotlinJs = "stdlib-js"
 
     object Npm {
         const val emotionReact = "@emotion/react"
         const val emotionStyled = "@emotion/styled"
     }
-}
-
-object WebFrontedVersions {
-
 }
