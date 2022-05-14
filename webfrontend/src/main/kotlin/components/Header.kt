@@ -1,18 +1,30 @@
 package components
 
-import csstype.*
-import kotlinext.js.jso
+import csstype.AlignItems
+import csstype.Color
+import csstype.Display
+import csstype.FlexDirection
+import csstype.JustifyContent
+import csstype.Position
+import csstype.attr
+import csstype.rem
+import emotion.react.css
 import mui.icons.material.AccountCircle
 import mui.icons.material.ShoppingCart
-import mui.material.*
+import mui.material.AppBar
+import mui.material.Link
+import mui.material.LinkUnderline
+import mui.material.SvgIconSize
+import mui.material.Typography
+import mui.material.styles.TypographyVariant
+import mui.system.sx
 import react.FC
 import react.Props
-import react.css.css
 import style.Colors
 
 val Header = FC<Props> {
     AppBar {
-        sx = jso {
+        sx {
             height = 4.rem
 
             position = Position.relative
@@ -30,7 +42,7 @@ val Header = FC<Props> {
             to = "/cart"
 
             ShoppingCart {
-                sx = jso {
+                sx {
                     color = Color(Colors.white)
                 }
                 fontSize = SvgIconSize.large
@@ -39,17 +51,17 @@ val Header = FC<Props> {
         Typography {
             css {
                 before {
-                    +"Items: "
+                    content = attr("Items: ")
                 }
                 after {
-                    +"$"
+                    content = attr("$")
                 }
             }
-            variant = "h4"
+            variant = TypographyVariant.h4
             +"0"
         }
         Link {
-            sx = jso {
+            sx {
                 color = Color(Colors.white)
             }
             underline = LinkUnderline.none
@@ -61,7 +73,7 @@ val Header = FC<Props> {
             to = "/login"
 
             AccountCircle {
-                sx = jso {
+                sx {
                     color = Color(Colors.white)
                 }
                 fontSize = SvgIconSize.large

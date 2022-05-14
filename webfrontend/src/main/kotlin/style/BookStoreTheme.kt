@@ -1,8 +1,10 @@
 package style
 
+import csstype.Color
 import csstype.FontWeight
 import csstype.pct
-import kotlinext.js.jso
+import kotlinx.js.jso
+import mui.material.PaletteMode
 import mui.material.styles.PaletteColor
 import mui.material.styles.PaletteOptions
 import mui.material.styles.createTheme
@@ -97,20 +99,20 @@ val BookStoreTheme = createTheme(
 
 val lightPalette: PaletteOptions =
     jso {
-        mode = "light"
+        mode = PaletteMode.light
         primary = jso<PaletteColor> {
-            main = Colors.red900
-            light = Colors.red900Light
-            dark = Colors.red900Dark
-            contrastText = Colors.white
+            main = Color(Colors.red900)
+            light = Color(Colors.red900Light)
+            dark = Color(Colors.red900Dark)
+            contrastText = Color(Colors.white)
         }
         secondary = jso<PaletteColor> {
-            main = Colors.lightBlue100
-            light = Colors.lightBlue100Light
-            dark = Colors.lightBlue100Dark
-            contrastText = Colors.black
+            main = Color(Colors.lightBlue100)
+            light = Color(Colors.lightBlue100Light)
+            dark = Color(Colors.lightBlue100Dark)
+            contrastText = Color(Colors.black)
         }
         error = jso<PaletteColor> {
-            main = Colors.orange600
+            main = Color(Colors.orange600)
         }
     }

@@ -1,21 +1,26 @@
 object WebFrontendDeps {
     private const val kotlinWrappers = "org.jetbrains.kotlin-wrappers"
+    private const val kotlinWrappersVersion = "1.0.0-pre.336"
 
-    const val reactCore = "$kotlinWrappers:kotlin-react:${WebFrontedVersions.reactCore}"
-    const val reactDom = "$kotlinWrappers:kotlin-react-dom:${WebFrontedVersions.reactCore}"
-    const val reactCss = "$kotlinWrappers:kotlin-react-css:${WebFrontedVersions.reactCore}"
-    const val reactRouter = "$kotlinWrappers:kotlin-react-router-dom:${WebFrontedVersions.reactRouter}"
-    const val redux = "$kotlinWrappers:kotlin-redux:${WebFrontedVersions.redux}"
-    const val reactRedux = "$kotlinWrappers:kotlin-react-redux:${WebFrontedVersions.reactRedux}"
+    private fun kotlinw(name: String) =
+        "$kotlinWrappers:kotlin-$name"
 
-    const val styled = "$kotlinWrappers:kotlin-styled:${WebFrontedVersions.kotlinStyled}"
-    const val kotlinMui = "$kotlinWrappers:kotlin-mui:${WebFrontedVersions.mui}"
-    const val kotlinMuiIcons = "$kotlinWrappers:kotlin-mui-icons:${WebFrontedVersions.mui}"
+    val kotlinWrapperBom = kotlinw("wrappers-bom:$kotlinWrappersVersion")
+    val reactCore = kotlinw("react")
+    val reactDom = kotlinw("react-dom")
+    val reactRouter = kotlinw("react-router-dom")
+    val redux = kotlinw("redux")
+    val reactRedux = kotlinw("react-redux")
 
-    const val ktorClientJs = "io.ktor:ktor-client-js:${SharedVersions.ktor}"
-    const val kotlinCoroutinesJs = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:${SharedVersions.kotlinCoroutines}"
+    val emotion = kotlinw("emotion")
+    val styled = kotlinw("styled")
+    val kotlinMui = kotlinw("mui")
+    val kotlinMuiIcons = kotlinw("mui-icons")
 
-    const val kotlinJs = "stdlib-js"
+    val ktorClientJs = "io.ktor:ktor-client-js:${SharedVersions.ktor}"
+    val kotlinCoroutinesJs = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:${SharedVersions.kotlinCoroutines}"
+
+    val kotlinJs = "stdlib-js"
 
     object Npm {
         const val emotionReact = "@emotion/react"
@@ -24,15 +29,5 @@ object WebFrontendDeps {
 }
 
 object WebFrontedVersions {
-    private const val kotlinPostfix = "-pre.293-kotlin-1.6.10"
 
-    const val reactCore = "17.0.2$kotlinPostfix"
-    const val reactRouter = "6.2.1$kotlinPostfix"
-    const val redux = "4.1.2$kotlinPostfix"
-    const val reactRedux = "7.2.6$kotlinPostfix"
-    const val kotlinStyled = "5.3.3$kotlinPostfix"
-    const val mui = "5.3.1$kotlinPostfix"
-
-    const val emotionReact = "11.7.1"
-    const val emotionStyled = "11.6.0"
 }

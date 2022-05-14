@@ -6,17 +6,19 @@ import csstype.Cursor
 import csstype.em
 import csstype.px
 import csstype.rem
+import emotion.react.css
 import extension.toFixed
-import kotlinext.js.jso
 import kotlinx.browser.window
+import kotlinx.js.jso
 import model.Book
 import mui.material.Stack
 import mui.material.StackDirection
 import mui.material.Typography
-import mui.system.ResponsiveStyleValue
+import mui.material.styles.TypographyVariant
+import mui.system.responsive
+import mui.system.sx
 import react.FC
 import react.Props
-import react.css.css
 import react.dom.html.ReactHTML.img
 import react.key
 
@@ -35,7 +37,7 @@ val BookCarousel = FC<BookCarouselProps> { props ->
         val books = props.books
         if (books.isEmpty()) {
             Typography {
-                variant = "h2"
+                variant = TypographyVariant.h2
                 +"Internal error"
             }
             return@Carousel
@@ -82,11 +84,11 @@ external interface BookSlideProps : Props {
 
 val BookSlide = FC<BookSlideProps> { props ->
     Stack {
-        sx = jso {
+        sx {
             marginLeft = 2.rem
         }
-        direction = ResponsiveStyleValue(StackDirection.row)
-        spacing = ResponsiveStyleValue(BOOK_SLIDE_SPACING)
+        direction = responsive(StackDirection.row)
+        spacing = responsive(BOOK_SLIDE_SPACING)
 
         props.items.forEachIndexed { index, book ->
             BookItem {
@@ -114,8 +116,8 @@ external interface BookProps : Props {
 
 val BookItem = FC<BookProps> { props ->
     Stack {
-        direction = ResponsiveStyleValue(StackDirection.column)
-        spacing = ResponsiveStyleValue(1)
+        direction = responsive(StackDirection.column)
+        spacing = responsive(1)
 
         img {
             css {

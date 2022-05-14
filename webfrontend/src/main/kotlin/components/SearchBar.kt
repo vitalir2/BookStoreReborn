@@ -3,9 +3,14 @@ package components
 import csstype.Color
 import csstype.em
 import csstype.rem
-import kotlinext.js.jso
 import mui.icons.material.SearchOutlined
-import mui.material.*
+import mui.material.FormControl
+import mui.material.FormControlVariant
+import mui.material.IconButton
+import mui.material.InputAdornment
+import mui.material.InputAdornmentPosition
+import mui.material.OutlinedInput
+import mui.system.sx
 import react.FC
 import react.Props
 import react.create
@@ -17,7 +22,7 @@ val SearchBar = FC<Props> {
     FormControl {
         val (text, setText) = useState("")
 
-        sx = jso {
+        sx {
             width = 20.em
             height = 2.rem
             margin = 0.5.rem
@@ -27,7 +32,7 @@ val SearchBar = FC<Props> {
         variant = FormControlVariant.outlined
 
         OutlinedInput {
-            sx = jso {
+            sx {
                 height = 2.rem
                 paddingLeft = 0.5.em
             }
@@ -40,13 +45,12 @@ val SearchBar = FC<Props> {
             placeholder = "search by author"
             endAdornment = SearchInputAdornment.create()
         }
-
     }
 }
 
 val SearchInputAdornment = FC<Props> {
     InputAdornment {
-        sx = jso {
+        sx {
             color = Color(Colors.black)
         }
         position = InputAdornmentPosition.end
