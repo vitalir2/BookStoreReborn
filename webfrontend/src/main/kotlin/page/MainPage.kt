@@ -42,4 +42,5 @@ object MainPage : PageObject<Props>, KoinComponent {
             books = stateBooks
         }
     }
+    override val route: String = ""
 }

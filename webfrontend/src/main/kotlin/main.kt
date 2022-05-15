@@ -48,7 +48,7 @@ private val MainRouter = FC<Props> {
                     element = LoginPage.create()
                 }
                 Route {
-                    path = "books/:bookId"
+                    path = BookDescriptionPage.route
                     element = BookDescriptionPage.reactComponent.create()
                 }
             }

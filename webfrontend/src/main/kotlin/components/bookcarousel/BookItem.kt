@@ -8,6 +8,8 @@ import mui.material.Stack
 import mui.material.StackDirection
 import mui.material.Typography
 import mui.system.responsive
+import page.description.BookDescriptionPage
+import page.toPath
 import react.FC
 import react.Props
 import react.dom.html.ReactHTML
@@ -19,7 +21,9 @@ val BookItem = FC<BookProps> { props ->
         spacing = responsive(1)
 
         Link {
-            to = "books/123" // TODO @vitalir: Set book ID
+            to = BookDescriptionPage.toPath(
+                BookDescriptionPage.VAR_BOOK_ID to "123"
+            ) // TODO @vitalir: Set book ID
             ReactHTML.img {
                 css {
                     width = props.width
