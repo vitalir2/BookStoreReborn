@@ -6,13 +6,10 @@ import csstype.Display
 import csstype.FlexDirection
 import csstype.JustifyContent
 import csstype.Position
-import csstype.attr
 import csstype.rem
-import emotion.react.css
 import mui.icons.material.AccountCircle
 import mui.icons.material.ShoppingCart
 import mui.material.AppBar
-import mui.material.Link
 import mui.material.LinkUnderline
 import mui.material.SvgIconSize
 import mui.material.Typography
@@ -21,6 +18,8 @@ import mui.system.sx
 import react.FC
 import react.Props
 import style.Colors
+import mui.material.Link as MuiLink
+import react.router.dom.Link as RouterLink
 
 val Header = FC<Props> {
     AppBar {
@@ -38,46 +37,50 @@ val Header = FC<Props> {
 
         BookStoreLogo()
         SearchBar()
-        react.router.dom.Link {
-            to = "/cart"
-
-            ShoppingCart {
-                sx {
-                    color = Color(Colors.white)
-                }
-                fontSize = SvgIconSize.large
-            }
-        }
+        ShoppingCartLink()
         Typography {
-            css {
-                before {
-                    content = attr("Items: ")
-                }
-                after {
-                    content = attr("$")
-                }
-            }
             variant = TypographyVariant.h4
-            +"0"
+            +"Items: 0 $"
         }
-        Link {
+        BrowseLink()
+        AccountLink()
+    }
+}
+
+private val ShoppingCartLink: FC<Props> = FC {
+    RouterLink {
+        to = "/cart"
+
+        ShoppingCart {
             sx {
                 color = Color(Colors.white)
             }
-            underline = LinkUnderline.none
-            variant = "h4"
-            href = "#"
-            +"Browse"
+            fontSize = SvgIconSize.large
         }
-        react.router.dom.Link {
-            to = "/login"
+    }
+}
 
-            AccountCircle {
-                sx {
-                    color = Color(Colors.white)
-                }
-                fontSize = SvgIconSize.large
+private val BrowseLink: FC<Props> = FC {
+    MuiLink {
+        sx {
+            color = Color(Colors.white)
+        }
+        underline = LinkUnderline.none
+        variant = "h4"
+        href = "#"
+        +"Browse"
+    }
+}
+
+private val AccountLink: FC<Props> = FC {
+    RouterLink {
+        to = "/login"
+
+        AccountCircle {
+            sx {
+                color = Color(Colors.white)
             }
+            fontSize = SvgIconSize.large
         }
     }
 }
