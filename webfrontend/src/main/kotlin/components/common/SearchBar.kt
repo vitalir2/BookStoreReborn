@@ -1,6 +1,5 @@
 package components.common
 
-import csstype.Color
 import csstype.em
 import csstype.rem
 import mui.icons.material.SearchOutlined
@@ -16,7 +15,7 @@ import react.Props
 import react.create
 import react.dom.html.ButtonType
 import react.useState
-import style.Colors
+import style.BookStoreTheme
 
 val SearchBar = FC<Props> {
     FormControl {
@@ -27,7 +26,7 @@ val SearchBar = FC<Props> {
             height = 2.rem
             margin = 0.5.rem
 
-            backgroundColor = Color(Colors.white)
+            backgroundColor = BookStoreTheme.palette.common.white
         }
         variant = FormControlVariant.outlined
 
@@ -51,7 +50,7 @@ val SearchBar = FC<Props> {
 val SearchInputAdornment = FC<Props> {
     InputAdornment {
         sx {
-            color = Color(Colors.black)
+            color = BookStoreTheme.palette.common.black
         }
         position = InputAdornmentPosition.end
 

@@ -13,7 +13,6 @@ import mui.system.sx
 import react.FC
 import react.Props
 import react.router.dom.Link
-import style.Colors
 
 val BookCarouselHeader = FC<BookCarouselHeaderProps> { props ->
     Stack {
@@ -37,7 +36,7 @@ val BookCarouselHeader = FC<BookCarouselHeaderProps> { props ->
 
             Typography {
                 sx {
-                    color = Color(Colors.red900)
+                    color = "primary.main".unsafeCast<Color>()
                 }
                 variant = TypographyVariant.caption
                 +"See more"

@@ -22,9 +22,17 @@ fun main() {
         modules(useCaseModule)
     }
     render(
-        element = MainRouter.create(),
+        element = App.create(),
         container = document.createElement("div").also { document.body!!.appendChild(it) }
     )
+}
+
+private val App = FC<Props> {
+    ThemeProvider {
+        theme = BookStoreTheme
+
+        MainRouter()
+    }
 }
 
 private val MainRouter = FC<Props> {
@@ -32,7 +40,7 @@ private val MainRouter = FC<Props> {
         Routes {
             Route {
                 path = "/"
-                element = BookStoreApp.create()
+                element = AppContainer.create()
 
                 Route {
                     index = true
@@ -56,11 +64,7 @@ private val MainRouter = FC<Props> {
     }
 }
 
-private val BookStoreApp = FC<Props> {
-    ThemeProvider {
-        theme = BookStoreTheme
-
-        Header()
-        Outlet()
-    }
+private val AppContainer = FC<Props> {
+    Header()
+    Outlet()
 }

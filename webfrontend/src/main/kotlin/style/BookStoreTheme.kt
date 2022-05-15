@@ -6,12 +6,28 @@ import csstype.pct
 import kotlinx.js.jso
 import mui.material.PaletteMode
 import mui.material.styles.PaletteColor
-import mui.material.styles.PaletteOptions
 import mui.material.styles.createTheme
 
 val BookStoreTheme = createTheme(
     options = jso {
-        palette = lightPalette
+        palette = jso {
+            mode = PaletteMode.light
+            primary = jso<PaletteColor> {
+                main = Color(Colors.red900)
+                light = Color(Colors.red900Light)
+                dark = Color(Colors.red900Dark)
+                contrastText = Color(Colors.white)
+            }
+            secondary = jso<PaletteColor> {
+                main = Color(Colors.lightBlue100)
+                light = Color(Colors.lightBlue100Light)
+                dark = Color(Colors.lightBlue100Dark)
+                contrastText = Color(Colors.black)
+            }
+            error = jso<PaletteColor> {
+                main = Color(Colors.orange600)
+            }
+        }
         typography = jso<TypographyOptions> {
             htmlFontSize = 16
             fontFamily = FontFamily.LATO
@@ -96,23 +112,3 @@ val BookStoreTheme = createTheme(
         }
     }
 )
-
-val lightPalette: PaletteOptions =
-    jso {
-        mode = PaletteMode.light
-        primary = jso<PaletteColor> {
-            main = Color(Colors.red900)
-            light = Color(Colors.red900Light)
-            dark = Color(Colors.red900Dark)
-            contrastText = Color(Colors.white)
-        }
-        secondary = jso<PaletteColor> {
-            main = Color(Colors.lightBlue100)
-            light = Color(Colors.lightBlue100Light)
-            dark = Color(Colors.lightBlue100Dark)
-            contrastText = Color(Colors.black)
-        }
-        error = jso<PaletteColor> {
-            main = Color(Colors.orange600)
-        }
-    }
