@@ -3,7 +3,6 @@ package client
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
-import io.ktor.http.*
 import model.Book
 
 fun interface GetBooksUseCase {
@@ -12,11 +11,7 @@ fun interface GetBooksUseCase {
 
 class GetBooksUseCaseImpl : GetBooksUseCase {
     override suspend fun invoke(): Array<Book> {
-        val booksResponse: HttpResponse = HttpClient.client.get("$DEFAULT_HOST/book") {
-            headers {
-                append(HttpHeaders.ContentType, "application/json")
-            }
-        }
+        val booksResponse: HttpResponse = HttpClient.client.get("book")
         if (booksResponse.status.value !in MIN_ERROR_CODE..MAX_ERROR_CODE) {
             return booksResponse.body()
         }
@@ -30,11 +25,7 @@ fun interface GetPaginatedBooksUseCase {
 
 class GetPaginatedBooksUseCaseImpl : GetPaginatedBooksUseCase {
     override suspend fun invoke(offset: Long, limit: Int): Array<Book> {
-        val booksResponse: HttpResponse = HttpClient.client.get(getPaginatedUrl(offset, limit)) {
-            headers {
-                append(HttpHeaders.ContentType, "application/json")
-            }
-        }
+        val booksResponse: HttpResponse = HttpClient.client.get(getPaginatedUrl(offset, limit))
         if (booksResponse.status.value !in MIN_ERROR_CODE..MAX_ERROR_CODE) {
             return booksResponse.body()
         }
@@ -42,4 +33,4 @@ class GetPaginatedBooksUseCaseImpl : GetPaginatedBooksUseCase {
     }
 }
 
-private fun getPaginatedUrl(offset: Long, limit: Int): String = "$DEFAULT_HOST/book?offset=$offset&limit=$limit"
+private fun getPaginatedUrl(offset: Long, limit: Int): String = "book?offset=$offset&limit=$limit"

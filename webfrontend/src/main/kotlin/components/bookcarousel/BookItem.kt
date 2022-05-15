@@ -22,8 +22,8 @@ val BookItem = FC<BookProps> { props ->
 
         Link {
             to = BookDescriptionPage.toPath(
-                BookDescriptionPage.VAR_BOOK_ID to "123"
-            ) // TODO @vitalir: Set book ID
+                BookDescriptionPage.VAR_BOOK_ID to props.title
+            )
             ReactHTML.img {
                 css {
                     width = props.width
