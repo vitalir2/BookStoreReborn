@@ -2,7 +2,6 @@ package components
 
 import csstype.AlignItems
 import csstype.ClassName
-import csstype.Color
 import csstype.rem
 import mui.material.Stack
 import mui.material.StackDirection
@@ -13,6 +12,7 @@ import mui.system.sx
 import react.FC
 import react.Props
 import react.router.dom.Link
+import style.muiColor
 
 val BookCarouselHeader = FC<BookCarouselHeaderProps> { props ->
     Stack {
@@ -36,7 +36,7 @@ val BookCarouselHeader = FC<BookCarouselHeaderProps> { props ->
 
             Typography {
                 sx {
-                    color = "primary.main".unsafeCast<Color>()
+                    color = muiColor("primary.main")
                 }
                 variant = TypographyVariant.caption
                 +"See more"

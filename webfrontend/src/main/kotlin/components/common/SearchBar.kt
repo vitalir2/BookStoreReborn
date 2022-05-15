@@ -16,6 +16,7 @@ import react.create
 import react.dom.html.ButtonType
 import react.useState
 import style.BookStoreTheme
+import style.muiColor
 
 val SearchBar = FC<Props> {
     FormControl {
@@ -50,7 +51,7 @@ val SearchBar = FC<Props> {
 val SearchInputAdornment = FC<Props> {
     InputAdornment {
         sx {
-            color = BookStoreTheme.palette.common.black
+            color = muiColor("common.black")
         }
         position = InputAdornmentPosition.end
 

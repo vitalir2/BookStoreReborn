@@ -1,5 +1,8 @@
 package style
 
+import csstype.Color
+import csstype.PropertiesBuilder
+
 object Colors {
     const val red900 = "#B71C1C"
     const val red900Light = "#D32F2F"
@@ -14,3 +17,6 @@ object Colors {
     const val white = "#FFFFFF"
     const val black = "#000000"
 }
+
+fun PropertiesBuilder.muiColor(name: String): Color =
+    name.unsafeCast<Color>()

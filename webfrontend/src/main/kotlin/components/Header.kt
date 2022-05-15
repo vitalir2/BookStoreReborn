@@ -20,6 +20,7 @@ import mui.system.sx
 import react.FC
 import react.Props
 import style.Colors
+import style.muiColor
 import mui.material.Link as MuiLink
 import react.router.dom.Link as RouterLink
 
@@ -34,7 +35,7 @@ val Header = FC<Props> {
             alignItems = AlignItems.center
             justifyContent = JustifyContent.spaceAround
 
-            backgroundColor = Color(Colors.red900)
+            backgroundColor = muiColor("primary.main")
         }
 
         BookStoreLogo()
@@ -55,7 +56,7 @@ private val ShoppingCartLink: FC<Props> = FC {
 
         ShoppingCart {
             sx {
-                color = Color(Colors.white)
+                color = muiColor("common.white")
             }
             fontSize = SvgIconSize.large
         }
@@ -80,7 +81,7 @@ private val AccountLink: FC<Props> = FC {
 
         AccountCircle {
             sx {
-                color = Color(Colors.white)
+                color = muiColor("common.white")
             }
             fontSize = SvgIconSize.large
         }
