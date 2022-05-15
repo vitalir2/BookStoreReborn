@@ -14,9 +14,9 @@
     <ID>FinalNewline:com.bookstore.plugins.Http.kt:1</ID>
     <ID>FinalNewline:com.bookstore.plugins.Route.kt:1</ID>
     <ID>FinalNewline:com.bookstore.route.BookRoute.kt:1</ID>
-    <ID>FinalNewline:components.BookStoreLogo.kt:1</ID>
+    <ID>FinalNewline:components.common.getBookStoreLogo.kt:1</ID>
     <ID>FinalNewline:components.Header.kt:1</ID>
-    <ID>FinalNewline:components.SearchBar.kt:1</ID>
+    <ID>FinalNewline:components.common.getSearchBar.kt:1</ID>
     <ID>FinalNewline:model.Book.kt:1</ID>
     <ID>FinalNewline:page.CartPage.kt:1</ID>
     <ID>FinalNewline:page.LoginPage.kt:1</ID>
@@ -86,7 +86,7 @@
     <ID>NewLineAtEndOfFile:BackendDeps.kt$.BackendDeps.kt</ID>
     <ID>NewLineAtEndOfFile:Book.kt$model.Book.kt</ID>
     <ID>NewLineAtEndOfFile:BookRoute.kt$com.bookstore.route.BookRoute.kt</ID>
-    <ID>NewLineAtEndOfFile:BookStoreLogo.kt$components.BookStoreLogo.kt</ID>
+    <ID>NewLineAtEndOfFile:BookStoreLogo.kt$components.common.getBookStoreLogo.kt</ID>
     <ID>NewLineAtEndOfFile:Books.kt$com.bookstore.data.model.Books.kt</ID>
     <ID>NewLineAtEndOfFile:CORS.kt$com.bookstore.plugins.CORS.kt</ID>
     <ID>NewLineAtEndOfFile:CartPage.kt$page.CartPage.kt</ID>
@@ -96,11 +96,11 @@
     <ID>NewLineAtEndOfFile:LoginPage.kt$page.LoginPage.kt</ID>
     <ID>NewLineAtEndOfFile:Plugins.kt$.Plugins.kt</ID>
     <ID>NewLineAtEndOfFile:Route.kt$com.bookstore.plugins.Route.kt</ID>
-    <ID>NewLineAtEndOfFile:SearchBar.kt$components.SearchBar.kt</ID>
+    <ID>NewLineAtEndOfFile:SearchBar.kt$components.common.getSearchBar.kt</ID>
     <ID>NewLineAtEndOfFile:SharedDeps.kt$.SharedDeps.kt</ID>
     <ID>NewLineAtEndOfFile:WebFrontendDeps.kt$.WebFrontendDeps.kt</ID>
     <ID>NoBlankLineBeforeRbrace:BackendDeps.kt:40</ID>
-    <ID>NoBlankLineBeforeRbrace:components.SearchBar.kt:43</ID>
+    <ID>NoBlankLineBeforeRbrace:components.common.getSearchBar.kt:43</ID>
     <ID>NoBlankLineBeforeRbrace:page.CartPage.kt:7</ID>
     <ID>NoBlankLineBeforeRbrace:page.LoginPage.kt:7</ID>
     <ID>NoConsecutiveBlankLines:MuiCarousel.kt:116</ID>
@@ -128,7 +128,7 @@
     <ID>NoWildcardImports:com.bookstore.route.BookRoute.kt:7</ID>
     <ID>NoWildcardImports:components.Header.kt:3</ID>
     <ID>NoWildcardImports:components.Header.kt:7</ID>
-    <ID>NoWildcardImports:components.SearchBar.kt:8</ID>
+    <ID>NoWildcardImports:components.common.getSearchBar.kt:8</ID>
     <ID>VariableNaming:MuiCarousel.kt$CarouselProps$/** Defines the element inside the indicator `IconButton`s Refer to
       [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples. * It is advised
       to use Material UI Icons, but you could use any element (`&lt;img/&gt;`, `&lt;div/&gt;`, ...) you like.*/ var

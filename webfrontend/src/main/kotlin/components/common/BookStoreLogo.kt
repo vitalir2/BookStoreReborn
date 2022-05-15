@@ -1,4 +1,4 @@
-package components
+package components.common
 
 import csstype.AlignItems
 import csstype.Color

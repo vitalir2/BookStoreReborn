@@ -1,4 +1,4 @@
-package components
+package components.common
 
 import csstype.Color
 import csstype.em

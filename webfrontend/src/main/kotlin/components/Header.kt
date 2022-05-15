@@ -1,5 +1,7 @@
 package components
 
+import components.common.BookStoreLogo
+import components.common.SearchBar
 import csstype.AlignItems
 import csstype.Color
 import csstype.Display
